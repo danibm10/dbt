@@ -1,0 +1,245 @@
+version: 2
+
+sources:
+
+  - name: src_sql_server # name of the source 
+    schema: sql_server # this is the schema our raw data lives in
+    database: dev_bronze_db_alumno1 # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
+    tables:
+
+      - name: addresses
+        description: >
+          Direcciones de envío de los pedidos.
+        columns:
+          - name: address_id
+            description: >
+              PK de la tabla de address.
+            tests:
+              - unique
+              - not null
+          - name: zipcode
+            description: >
+              Código postal.
+          - name: country
+            description: >
+              País.
+          - name: address
+            description: >
+              Dirección.
+          - name: state
+            description: >
+              Estado.
+          - name: _fivetran_deleted
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica si un registro ha sido borrado.
+          - name: _fivetran_synced
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
+
+      - name: events
+        description: ""
+        columns:
+          - name: event_id
+            description: >
+              PK de la tabla de events.
+            tests:
+              - unique
+              - not null
+          - name: page_url
+            description: >
+              Página web donde los usuarios acceden para comprar el producto.
+          - name: event_type
+            description: >
+              Acción que realiza el usuario al entrar a la página web.
+          - name: user_id
+            description: >
+              PK de la tabla users.
+          - name: product_id
+            description: >
+              PK de la tabla products.
+          - name: session_id
+            description: >
+              Sesión ID del evento.
+          - name: created_at
+            description: >
+              Fecha en la que se crea el evento.
+          - name: order_id
+            description: >
+              PK de la tabla orders.
+          - name: _fivetran_deleted
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica si un registro ha sido borrado.
+          - name: _fivetran_synced
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
+
+      - name: order_items
+        description: ""
+        columns:
+          - name: order_id
+            description: >
+              PK de la tabla de order items.
+            tests:
+              - unique
+              - not null
+          - name: product_id
+            description: >
+              PK de la tabla products.
+          - name: quantity
+            description: >
+              cantidad de producto.
+          - name: _fivetran_deleted
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica si un registro ha sido borrado.
+          - name: _fivetran_synced
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
+
+      - name: orders
+        description: ""
+        columns:
+          - name: order_id
+            description: >
+              PK de la tabla de orders.
+            tests:
+              - unique
+              - not null
+          - name: shipping_service
+            description: >
+              empresa que realiza el envío.
+          - name: shipping_cost
+            description: >
+              coste del envío.
+          - name: address_id
+            description: >
+              PK de la tabla addresss.
+          - name: created_at
+            description: >
+              fecha cuando la compra se hizo.
+          - name: promo_id
+            description: >
+              PK de la tabla promos.
+          - name: estimated_delivery_at
+            description: >
+              fecha estimada de entrega.
+          - name: order_cost
+            description: >
+              coste del order.
+          - name: user_id
+            description: >
+              PK de la tabla users.
+          - name: order_total
+            description: >
+              valor total del pedido.
+          - name: delivered_at
+            description: >
+              fecha de entrega del pedido.
+          - name: tracking_id
+            description: >
+              id del envío.
+          - name: status
+            description: >
+              estado del pedido.
+          - name: _fivetran_deleted
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica si un registro ha sido borrado.
+          - name: _fivetran_synced
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
+
+      - name: products
+        description: ""
+        columns:
+          - name: product_id
+            description: >
+              PK de la tabla de products.
+            tests:
+              - unique
+              - not null
+          - name: price
+            description: >
+              precio de venta del producto.
+          - name: name
+            description: >
+              nombre del producto.
+          - name: inventory
+            description: >
+              número de unidades de producto que quedan en el inventario.
+          - name: _fivetran_deleted
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica si un registro ha sido borrado.
+          - name: _fivetran_synced
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
+
+      - name: promos
+        description: ""
+        columns:
+          - name: promo_id
+            description: >
+              PK de la tabla de promos.
+            tests:
+              - unique
+              - not null
+          - name: discount
+            description: >
+              porcentaje de descuento que se aplica al producto.
+          - name: status
+            description: >
+              estado de la promoción.
+          - name: _fivetran_deleted
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica si un registro ha sido borrado.
+          - name: _fivetran_synced
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
+
+      - name: users
+        description: ""
+        columns:
+          - name: user_id
+            description: >
+              PK de la tabla de users.
+            tests:
+              - unique
+              - not null
+          - name: updated_at
+            description: >
+              fecha de actualización del usuario.
+          - name: address_id
+            description: >
+              PK de la tabla addresses.
+          - name: last_name
+            description: >
+              apellido del cliente.
+          - name: created_at
+            description: >
+              fecha de inserción del cliente.
+          - name: phone_number
+            description: >
+              número teléfono.
+          - name: total_orders
+            description: >
+              total pedido que hace un cliente.
+          - name: first_name
+            description: >
+              nombre del cliente.
+          - name: email
+            description: >
+              email del cliente.
+          - name: _fivetran_deleted
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica si un registro ha sido borrado.
+          - name: _fivetran_synced
+            description: >
+              Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.

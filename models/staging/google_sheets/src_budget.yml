@@ -1,0 +1,52 @@
+version: 2
+
+sources:
+
+  - name: src_budget # name of the source 
+    description: >
+      Raw data demo from Database.
+    schema: google_sheets # this is the schema our raw data lives in
+    database: dev_bronze_db_alumno1 # this is the name of our database
+
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
+    tables:
+
+      - name: budget
+        loaded_at_field: _fivetran_synced
+        description: >
+          Data about budget in demo.
+        columns:
+          - name: _row
+            description: >
+              PK de la tabla budget.
+            tests:
+              - not_null
+              - unique
+          - name: product_id
+            description: >
+               PK de la tabla de orders.
+            tests:
+              - not_null
+          - name: quantity
+            description: >
+              Cantidad de cada producto.
+            tests:
+              - not_null
+          - name: month
+            description: >
+              Cada mes del año.
+            tests:
+              - not_null
+          - name: _fivetran_synced
+            description: >
+              Fecha en la que los datos se cargaron.
+            tests:
+              - not_null
