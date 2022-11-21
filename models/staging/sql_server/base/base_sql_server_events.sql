@@ -20,8 +20,8 @@ events_v1 AS (
         , SUBSTRING(created_at, 1, 10) AS FECHA
         , SUBSTRING(created_at, 12, 8) AS HORA
         , order_id
-        , SUBSTRING(_fivetran_synced, 1, 10) AS FECHA
-        , SUBSTRING(_fivetran_synced, 12, 8) AS HORA
+        , SUBSTRING(_fivetran_synced, 1, 10) AS FECHA2
+        , SUBSTRING(_fivetran_synced, 12, 8) AS HORA2
     FROM src_sql_server_events
     )
 
