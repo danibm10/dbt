@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: base_sql_server_order_items
+    description: "En esta tabla lo que hemos hecho ha sido separar la fecha y la hora de sincronización, renombrar ambas columnas, cambiarle el formato a fecha y tiempo y por último hemos eliminado la columna de _fivetran_deleted"
+    columns:
+      - name: order_id
+        description: "número identificación del order"
+
+      - name: product_id
+        description: "número identificación del producto"
+
+      - name: quantity
+        description: "cantidad"
+
+      - name: fecha_sincronizacion
+        description: "fecha sincronización"
+
+      - name: hora_sincronizacion
+        description: "hora sincronización"

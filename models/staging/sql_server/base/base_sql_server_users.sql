@@ -15,14 +15,14 @@ users_v1 AS (
         , updated_at
         , address_id
         , last_name
-        , SUBSTRING(created_at, 1, 10) AS FECHA
-        , SUBSTRING(created_at, 12, 8) AS HORA
+        , CAST(SUBSTRING(created_at, 1, 10) AS DATE) AS FECHA_CREACION
+        , CAST(SUBSTRING(created_at, 12, 8) AS TIME) AS HORA_CREACION
         , phone_number
         , total_orders
         , first_name
         , email
-        , SUBSTRING(_fivetran_synced, 1, 10) AS FECHA2
-        , SUBSTRING(_fivetran_synced, 12, 8) AS HORA2
+        , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS FECHA_SINCRONIZACION
+        , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS HORA_SINCRONIZACION
     FROM src_sql_server_users
     )
 

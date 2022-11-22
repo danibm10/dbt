@@ -17,11 +17,11 @@ events_v1 AS (
         , user_id
         , product_id
         , session_id
-        , SUBSTRING(created_at, 1, 10) AS FECHA
-        , SUBSTRING(created_at, 12, 8) AS HORA
+        , CAST(SUBSTRING(created_at, 1, 10) AS DATE) AS FECHA_CREACION
+        , CAST(SUBSTRING(created_at, 12, 8) AS TIME) AS HORA_CREACION
         , order_id
-        , SUBSTRING(_fivetran_synced, 1, 10) AS FECHA2
-        , SUBSTRING(_fivetran_synced, 12, 8) AS HORA2
+        , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS FECHA_SINCRONIZACION
+        , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS HORA_SINCRONIZACION
     FROM src_sql_server_events
     )
 

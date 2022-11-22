@@ -14,8 +14,8 @@ promos_v1 AS (
           promo_id
         , discount
         , status
-        , SUBSTRING(_fivetran_synced, 1, 10) AS FECHA
-        , SUBSTRING(_fivetran_synced, 12, 8) AS HORA
+        , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS FECHA_SINCRONIZACION
+        , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS HORA_SINCRONIZACION
     FROM src_sql_server_promos
     )
 

@@ -6,7 +6,12 @@ sources:
     description: >
       Raw data demo from Database.
     schema: google_sheets # this is the schema our raw data lives in
-    database: dev_bronze_db_alumno1 # this is the name of our database
+    database: |  
+        {%- if  target.name == 'user_dev' -%} dev_bronze_db_alumno1 
+        {%- elif target.name == 'ci' -%} dev_bronze_db_alumno1 
+        {%- elif target.name == 'pro'-%} pro_bronze_db_alumno1  
+        {%- else -%} {{target.database}}_bronze_db_alumno1
+        {%- endif -%}
 
     quoting:
       database: false

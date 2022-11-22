@@ -4,7 +4,12 @@ sources:
 
   - name: src_sql_server # name of the source 
     schema: sql_server # this is the schema our raw data lives in
-    database: dev_bronze_db_alumno1 # this is the name of our database
+    database: |  
+        {%- if  target.name == 'user_dev' -%} dev_bronze_db_alumno1 
+        {%- elif target.name == 'ci' -%} dev_bronze_db_alumno1 
+        {%- elif target.name == 'pro'-%} pro_bronze_db_alumno1  
+        {%- else -%} {{target.database}}_bronze_db_alumno1
+        {%- endif -%}
 
     quoting:
       database: false
@@ -26,7 +31,7 @@ sources:
               PK de la tabla de address.
             tests:
               - unique
-              - not null
+              - not_null
           - name: zipcode
             description: >
               Código postal.
@@ -54,7 +59,7 @@ sources:
               PK de la tabla de events.
             tests:
               - unique
-              - not null
+              - not_null
           - name: page_url
             description: >
               Página web donde los usuarios acceden para comprar el producto.
@@ -91,7 +96,7 @@ sources:
               PK de la tabla de order items.
             tests:
               - unique
-              - not null
+              - not_null
           - name: product_id
             description: >
               PK de la tabla products.
@@ -113,7 +118,7 @@ sources:
               PK de la tabla de orders.
             tests:
               - unique
-              - not null
+              - not_null
           - name: shipping_service
             description: >
               empresa que realiza el envío.
@@ -165,7 +170,7 @@ sources:
               PK de la tabla de products.
             tests:
               - unique
-              - not null
+              - not_null
           - name: price
             description: >
               precio de venta del producto.
@@ -190,7 +195,7 @@ sources:
               PK de la tabla de promos.
             tests:
               - unique
-              - not null
+              - not_null
           - name: discount
             description: >
               porcentaje de descuento que se aplica al producto.
@@ -212,7 +217,7 @@ sources:
               PK de la tabla de users.
             tests:
               - unique
-              - not null
+              - not_null
           - name: updated_at
             description: >
               fecha de actualización del usuario.
