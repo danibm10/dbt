@@ -1,0 +1,23 @@
+ version: 2
+
+models:
+  - name: base_google_sheets_budget
+    description: "En esta tabla lo que hemos hecho ha sido separar la fecha y la hora de sincronización, renombrar ambas columnas, cambiarle el formato a fecha y hora respectivamente y por último hemos usado la función MONTHNAME para sacar el mes de la columna de MONTH"
+    columns:
+      - name: _row
+        description: "PK de la tabla budget"
+
+      - name: quantity
+        description: "Cantidad"
+
+      - name: month
+        description: "Mes"
+
+      - name: product_id
+        description: "número identificación del producto"
+
+      - name: fecha_sincronizacion
+        description: "Fecha en la que se actualizan los registros"
+
+      - name: hora_sincronizacion
+        description: "Hora en la que se actualizan los registros"
