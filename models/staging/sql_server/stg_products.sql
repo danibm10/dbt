@@ -26,6 +26,11 @@ stg_products AS (
         , a.inventory
         , b.product_unit_cost 
         , a.price
+        , CASE
+            when a.price<25 then 'Baja'
+            when a.price BETWEEN 25 AND 50 then 'Media'
+            when a.price>50 then 'Alta'
+            end as gama_producto
         , c.quantity AS quantity_sold
         , a.fecha_sincronizacion
         , a.hora_sincronizacion

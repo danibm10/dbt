@@ -11,10 +11,10 @@ WITH stg_sql_server_orders AS (
 
 stg_orders AS (
     SELECT
-          a.order_id as id_order
-        , a.user_id as id_client
-        , a.address_id as id_address
-        , a.promo_id as id_promo
+          a.order_id
+        , a.user_id as client_id
+        , a.address_id
+        , a.promo_id
         , a.shipping_service
         , a.shipping_cost
         , a.fecha_creacion

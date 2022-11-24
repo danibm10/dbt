@@ -12,7 +12,7 @@ WITH stg_sql_server_users AS (
 
 stg_clients AS (
     SELECT
-          a.user_id AS id_client
+          a.user_id AS client_id
         , a.first_name
         , a.last_name
         , a.phone_number

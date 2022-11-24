@@ -16,7 +16,8 @@ seed_zipcodes_city AS (
 
 stg_addresses AS (
     SELECT
-          a.address
+          a.address_id
+        , a.address
         , a.zipcode
         , b.city 
         , a.state
