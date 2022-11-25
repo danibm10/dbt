@@ -11,14 +11,11 @@ WITH stg_sql_server_users AS (
 
 
 stg_clients AS (
-    SELECT
+    SELECT 
           a.user_id AS client_id
         , a.first_name
         , a.last_name
-        , a.phone_number
-        , a.email
-        , a.fecha_sincronizacion
-        , a.hora_sincronizacion
+        , a._fivetran_synced 
           
     FROM stg_sql_server_users AS a
     )

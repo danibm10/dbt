@@ -21,8 +21,8 @@ users_v1 AS (
         , total_orders
         , first_name
         , email
-        , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS FECHA_SINCRONIZACION
-        , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS HORA_SINCRONIZACION
+        , _fivetran_synced
+        
     FROM src_sql_server_users
     )
 

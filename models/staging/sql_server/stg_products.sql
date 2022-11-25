@@ -32,8 +32,7 @@ stg_products AS (
             when a.price>50 then 'Alta'
             end as gama_producto
         , c.quantity AS quantity_sold
-        , a.fecha_sincronizacion
-        , a.hora_sincronizacion
+        , a._fivetran_synced
     FROM stg_sql_server_products AS a LEFT JOIN seed_product_unit_cost AS b
     ON a.product_id=b.product_id
     RIGHT JOIN stg_sql_server_order_items AS c

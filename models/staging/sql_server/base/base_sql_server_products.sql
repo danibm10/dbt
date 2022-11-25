@@ -15,8 +15,7 @@ products_v1 AS (
         , price
         , name
         , inventory
-        , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS FECHA_SINCRONIZACION
-        , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS HORA_SINCRONIZACION
+        , _fivetran_synced
     FROM src_sql_server_products
     )
 

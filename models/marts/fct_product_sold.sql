@@ -15,8 +15,9 @@ fct_order_items AS (
     ),  
 
 fct_product_sold AS (
-    SELECT
-          a.client_id
+    SELECT (
+        {{ dbt_utils.surrogate_key(['a.client_id', 'b.product_id','a.address_id']) }}) as product_sold_id
+        , a.client_id
         , b.product_id
         , a.address_id
         , a.order_id
