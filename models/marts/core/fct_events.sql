@@ -19,7 +19,7 @@ fct_events AS (
         , a.session_id
         , a.page_url
         , a.event_type
-        , a.fecha_creacion
+        , a.fecha_creacion as created_at
         , CASE
             when a.order_id = '' then 'No Compra'
             else 'Compra'

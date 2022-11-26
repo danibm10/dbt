@@ -21,7 +21,7 @@ fct_product_sold AS (
         , b.product_id
         , a.address_id
         , a.order_id
-        , b.quantity
+        , b.quantity as sales
 
     FROM fct_orders AS a LEFT JOIN fct_order_items AS b
     ON a.order_id=b.order_id

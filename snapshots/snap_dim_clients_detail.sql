@@ -1,4 +1,4 @@
-{% snapshot dim_clients_detail %}
+{% snapshot snap_dim_clients_detail %}
 
 {{
     config(

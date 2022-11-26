@@ -13,19 +13,18 @@ fct_orders AS (
     SELECT
           a.order_id
         , a.client_id
-        , a.address_id
         , a.promo_id
         , REPLACE(a.shipping_service, 'usps','ups') AS shipping_service
-        , a.shipping_cost
-        , a.fecha_creacion
-        , a.fecha_entrega
+        , a.shipping_cost as shipping_cost_usd
+        , a.fecha_creacion as created_at
+        , a.fecha_entrega as delivery_date
         , a.tracking_id
         , a.status
-        , a.tiempo_entrega
-        , a.order_total
-        , a.tiempo_prevision_entrega
-        , a.fecha_sincronizacion
-        , a.hora_sincronizacion
+        , a.tiempo_entrega as delivery_time
+        , a.order_total as order_total_usd
+        , a.tiempo_prevision_entrega as expected_delivery_time
+        , a.fecha_sincronizacion as sync_date
+        , a.hora_sincronizacion as sync_time
         
     FROM fct_orders1 AS a
    
