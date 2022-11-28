@@ -11,7 +11,7 @@ WITH dim_sql_server_products AS (
 
 
 dim_products AS (
-    SELECT 
+    SELECT DISTINCT
           a.product_id
         , a.name as product_name
         , a.inventory

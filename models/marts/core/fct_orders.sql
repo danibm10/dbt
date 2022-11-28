@@ -9,6 +9,11 @@ WITH fct_orders1 AS (
     FROM {{ ref('stg_orders') }}
     ),
 
+  dim_year_month_day1 AS (
+  SELECT * 
+  FROM {{ ref('dim_year_month_day') }}
+    ), 
+
 fct_orders AS (
     SELECT
           a.order_id
@@ -26,7 +31,7 @@ fct_orders AS (
         , a.fecha_sincronizacion as sync_date
         , a.hora_sincronizacion as sync_time
         
-    FROM fct_orders1 AS a LEFT JOIN dim_year_month_day AS b
+    FROM fct_orders1 AS a LEFT JOIN dim_year_month_day1 AS b
     ON a.fecha_convertida = b.year_month_day_id
     )
 

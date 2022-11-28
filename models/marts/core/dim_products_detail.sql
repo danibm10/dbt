@@ -10,7 +10,7 @@ WITH intermediate_product AS (
     ),
 
 dim_products_detail AS (
-    SELECT
+    SELECT DISTINCT
           a.product_detail_id
         , a.product_id
         , a.product_unit_cost as product_unit_cost_usd

@@ -9,6 +9,10 @@ WITH fct_events1 AS (
     FROM {{ ref('stg_events')}}
     ),
 
+dim_year_month_day1 AS (
+    SELECT * 
+    FROM {{ ref('dim_year_month_day') }}
+    ), 
 
 fct_events AS (
     SELECT
@@ -25,7 +29,7 @@ fct_events AS (
             else 'Compra'
             end as purchase_indicator
           
-    FROM fct_events1 AS a LEFT JOIN dim_year_month_day AS b
+    FROM fct_events1 AS a LEFT JOIN dim_year_month_day1 AS b
     ON a.created_at = b.year_month_day_id
     )
 

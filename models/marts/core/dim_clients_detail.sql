@@ -10,7 +10,7 @@ WITH intermediate_client AS (
     ),
 
 dim_client_detail AS (
-    SELECT
+    SELECT DISTINCT
           a.client_detail_id
         , a.client_id
         , a.phone_number

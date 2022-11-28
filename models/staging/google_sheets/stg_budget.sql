@@ -19,8 +19,7 @@ stg_budget AS (
     SELECT
           a._row AS budget_id
         , a.product_id
-        , MONTHNAME(a.date) AS month
-        , YEAR(a.date) AS year
+        , CONCAT(MONTHNAME(a.date),' ',YEAR(a.date)) as date
         , a.quantity AS expected_quantity_sold
         , (a.quantity * b.price) AS expected_income
         , (a.quantity * b.product_unit_cost) AS expected_cost
