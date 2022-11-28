@@ -21,10 +21,14 @@ fct_product_sold AS (
         , b.product_id
         , a.address_id
         , a.order_id
+        , c.year_month_day_id
         , b.quantity as sales
 
     FROM fct_orders AS a LEFT JOIN fct_order_items AS b
     ON a.order_id=b.order_id
+    LEFT JOIN dim_year_month_day AS c
+    ON
+    a.fecha_convertida=c.year_month_day_id
     
     )
 

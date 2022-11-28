@@ -19,7 +19,7 @@ stg_events AS (
         , a.session_id
         , a.page_url
         , a.event_type
-        , a.fecha_creacion
+        , CONCAT(DAY(a.fecha_creacion),' ',MONTHNAME(a.fecha_creacion),' ',YEAR(a.fecha_creacion)) AS created_at
           
     FROM stg_sql_server_events AS a
     )
