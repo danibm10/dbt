@@ -19,6 +19,7 @@ stg_orders AS (
         , a.shipping_cost
         , a.fecha_creacion
         , CONCAT(DAY(a.fecha_creacion),' ',MONTHNAME(a.fecha_creacion),' ',YEAR(a.fecha_creacion)) AS fecha_convertida
+        , a.fecha_llegada_estimada
         , a.fecha_entrega
         , a.tracking_id
         , a.status

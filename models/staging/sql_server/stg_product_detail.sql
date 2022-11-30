@@ -11,8 +11,8 @@ WITH stg_sql_server_productd AS (
 
 
 stg_product_detail AS (
-    SELECT (
-        {{ dbt_utils.surrogate_key(['a.product_id', 'a.product_unit_cost','a.price']) }}) AS product_detail_id
+    SELECT DISTINCT (
+        {{ dbt_utils.surrogate_key(['a.product_id', 'a.product_unit_cost','a.price','gama_producto']) }}) AS product_detail_id
         , a.product_id
         , a.product_unit_cost
         , a.price

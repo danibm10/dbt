@@ -19,7 +19,17 @@ stg_events AS (
         , a.session_id
         , a.page_url
         , a.event_type
-        , CONCAT(DAY(a.fecha_creacion),' ',MONTHNAME(a.fecha_creacion),' ',YEAR(a.fecha_creacion)) AS created_at
+        , a.created_at_time
+        , CASE
+            when HOUR(a.created_at_time) between 6 and 14 then 'mañana'
+            when HOUR(a.created_at_time) between 14 and 20 then 'tarde'
+            when HOUR(a.created_at_time) between 20 and 23 then 'noche'
+            else 'madrugada'
+          
+            end as momento_del_dia
+
+
+        , CONCAT(DAY(a.created_at_day),' ',MONTHNAME(a.created_at_day),' ',YEAR(a.created_at_day)) AS created_at
           
     FROM stg_sql_server_events AS a
     )

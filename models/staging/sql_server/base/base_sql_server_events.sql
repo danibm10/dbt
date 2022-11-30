@@ -17,8 +17,8 @@ events_v1 AS (
         , user_id
         , product_id
         , session_id
-        , CAST(SUBSTRING(created_at, 1, 10) AS DATE) AS FECHA_CREACION
-        , CAST(SUBSTRING(created_at, 12, 8) AS TIME) AS HORA_CREACION
+        , CAST(SUBSTRING(created_at, 1, 10) AS DATE) AS created_at_day
+        , CAST(SUBSTRING(created_at, 12, 8) AS TIME) AS created_at_time
         , order_id
         , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS FECHA_SINCRONIZACION
         , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS HORA_SINCRONIZACION
