@@ -1,41 +1,23 @@
 version: 2
 
 models:
-  - name: base_sql_server_users
-    description: "En esta tabla lo que hemos hecho ha sido separar la fecha y la hora de sincronización y creación del pedido, renombrar ambas columnas, cambiarle el formato a fecha y time respectivamente y hemos eliminado la columna de _fivetran_deleted"
+  - name: stg_users
+    description: ""
     columns:
       - name: user_id
-        description: "número identificación del user"
-
-      - name: updated_at
-        description: "fecha actualización registro"
-
-      - name: address_id
-        description: "id de la dirección"
-
-      - name: last_name
-        description: "apellido del cliente"
-
-      - name: fecha_creacion
-        description: "fecha creación del registro"
-
-      - name: hora_creacion
-        description: "hora creación del registro"
-
-      - name: phone_number
-        description: "número teléfono"
-
-      - name: total_orders
-        description: "total orders"
+        description: "PK de la tabla, identifica de manera única a cada usuario"
 
       - name: first_name
-        description: "nombre del cliente"
+        description: "nombre del usuario"
+
+      - name: last_name
+        description: "apellido del usuario"
+
+      - name: phone_number
+        description: "número de teléfono del usuario"
 
       - name: email
-        description: "email del cliente"
+        description: "email de cada usuario"
 
-      - name: fecha_sincronizacion
-        description: "fecha sincronización de los datos"
-
-      - name: hora_sincronizacion
-        description: "hora de sincronización de los datos"
+      - name: _fivetran_synced
+        description: "fecha y hora de sincronización del registro"

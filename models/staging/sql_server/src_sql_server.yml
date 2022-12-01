@@ -102,7 +102,7 @@ sources:
         columns:
           - name: order_id
             description: >
-              PK de la tabla de order items.
+              PK de la tabla de orders.
             tests:
               - relationships:
                   to: source('src_sql_server','orders')

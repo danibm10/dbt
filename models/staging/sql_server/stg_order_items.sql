@@ -14,8 +14,8 @@ order_items_v1 AS (
           order_id
         , product_id
         , quantity
-        , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS FECHA_SINCRONIZACION
-        , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS HORA_SINCRONIZACION
+        , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS sync_date
+        , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS sync_time
     FROM src_sql_server_order_items
     )
 

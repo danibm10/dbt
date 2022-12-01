@@ -1,20 +1,20 @@
-version: 2
+ version: 2
 
 models:
-  - name: base_sql_server_promos
-    description: "En esta tabla lo que hemos hecho ha sido separar la fecha y la hora de sincronización, renombrar ambas columnas, cambiarle el formato a fecha y tiempo y hemos eliminado la columna de _fivetran_deleted"
+  - name: stg_promos
+    description: ""
     columns:
       - name: promo_id
-        description: "número identificación de la promoción"
+        description: "PK de la tabla, identifica de manera única cada promo"
 
-      - name: discount
-        description: "descuento aplicado al order"
+      - name: discount_usd
+        description: "descuento que se aplica al order"
 
       - name: status
-        description: "estado del pedido"
+        description: "estado de la promo"
 
-      - name: fecha_sincronizacion
-        description: "fecha de sincronización de los registros"
+      - name: sync_date
+        description: "fecha de sincronización del registro"
 
-      - name: hora_sincronizacion
-        description: "hora de sincronización de los registros"
+      - name: sync_time
+        description: "hora de sincronización del registro"
