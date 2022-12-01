@@ -6,13 +6,13 @@
 
 WITH dim_sql_server_users AS (
     SELECT * 
-    FROM {{ ref('stg_clients')}}
+    FROM {{ ref('stg_users')}}
     ),
 
 
-dim_clients AS (
+dim_users AS (
     SELECT 
-          a.client_id
+          a.user_id
         , a.first_name
         , a.last_name
         , CONCAT(SUBSTRING(a._fivetran_synced, 1, 10),' - ',SUBSTRING(a._fivetran_synced, 12, 8)) as sync_date_time 
@@ -20,4 +20,4 @@ dim_clients AS (
     FROM dim_sql_server_users AS a
     )
 
-SELECT * FROM dim_clients
+SELECT * FROM dim_users

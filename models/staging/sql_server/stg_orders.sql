@@ -4,33 +4,32 @@
   )
 }}
 
-WITH stg_sql_server_orders AS (
+WITH src_sql_server_orders AS (
     SELECT * 
-    FROM {{ ref('base_sql_server_orders') }}
+    FROM {{ source('src_sql_server', 'orders') }}
     ),
 
-stg_orders AS (
+orders_v1 AS (
     SELECT
           a.order_id
-        , a.user_id as client_id
-        , a.address_id
-        , a.promo_id
         , a.shipping_service
-        , a.shipping_cost
-        , a.fecha_creacion
-        , CONCAT(DAY(a.fecha_creacion),' ',MONTHNAME(a.fecha_creacion),' ',YEAR(a.fecha_creacion)) AS fecha_convertida
-        , a.fecha_llegada_estimada
-        , a.fecha_entrega
+        , a.shipping_cost as shipping_cost_usd
+        , a.address_id
+        , CAST(SUBSTRING(a.created_at, 1, 10) AS DATE) AS creation_date
+        , CAST(SUBSTRING(a.created_at, 12, 8) AS TIME) AS creation_time
+        , a.promo_id
+        , CAST(SUBSTRING(a.estimated_delivery_at, 1, 10) AS DATE) AS estimated_delivery_date
+        , CAST(SUBSTRING(a.estimated_delivery_at, 12, 8) AS TIME) AS estimated_delivery_time
+        , a.order_cost
+        , a.user_id
+        , a.order_total as order_total_usd
+        , CAST(SUBSTRING(a.delivered_at, 1, 10) AS DATE) AS delivery_date
+        , CAST(SUBSTRING(a.delivered_at, 12, 8) AS TIME) AS delivery_time
         , a.tracking_id
         , a.status
-        , DATEDIFF(day,a.fecha_creacion,a.fecha_entrega) AS tiempo_entrega
-        , a.order_total
-        , DATEDIFF(day,a.fecha_llegada_estimada,a.fecha_entrega) AS tiempo_prevision_entrega
-        , a.fecha_sincronizacion
-        , a.hora_sincronizacion
-        
-    FROM stg_sql_server_orders AS a
-   
+        , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS sync_date
+        , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS sync_time
+    FROM src_sql_server_orders AS a
     )
 
-SELECT * FROM stg_orders
+SELECT * FROM orders_v1

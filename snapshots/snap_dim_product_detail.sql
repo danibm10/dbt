@@ -1,4 +1,4 @@
-{% snapshot snap_dim_product_detail %}
+{% snapshot snap_dim_products_detail %}
 
 {{
     config(
@@ -9,6 +9,6 @@
     )
 }}
 
-select * from {{ ref('stg_product_detail') }}
+select * from {{ ref('int_products_detail') }}
 
 {% endsnapshot %}

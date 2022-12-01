@@ -4,28 +4,21 @@
   )
 }}
 
-WITH stg_sql_server_addresses AS (
+WITH src_sql_server_addresses AS (
     SELECT * 
-    FROM {{ ref('base_sql_server_addresses') }}
+    FROM {{ source('src_sql_server', 'addresses') }}
     ),
 
-seed_zipcodes_city AS (
-    SELECT * 
-    FROM {{ ref('zipcodes_city')}}
-    ),    
-
-stg_addresses AS (
+addresses_v1 AS (
     SELECT
-          a.address_id
-        , a.address
-        , a.zipcode
-        , b.city 
-        , a.state
-        , a.country
-        , a.fecha_sincronizacion
-        , a.hora_sincronizacion
-    FROM stg_sql_server_addresses AS a LEFT JOIN seed_zipcodes_city AS b
-    ON a.zipcode=b.zipcode
+          address_id
+        , zipcode
+        , country
+        , address
+        , state
+        , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS sync_date
+        , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS sync_time
+    FROM src_sql_server_addresses
     )
 
-SELECT * FROM stg_addresses
+SELECT * FROM addresses_v1

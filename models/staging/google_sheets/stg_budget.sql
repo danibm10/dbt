@@ -4,31 +4,20 @@
   )
 }}
 
-WITH stg_google_sheets_budget AS (
+WITH src_google_sheets_budget AS (
     SELECT * 
-    FROM {{ ref('base_google_sheets_budget') }}
+    FROM {{ source('src_budget', 'budget') }}
     ),
- 
-stg_sql_server_products AS (
-    SELECT * 
-    FROM {{ ref('stg_products') }}
-    ),  
- 
 
-stg_budget AS (
+budget_v1 AS (
     SELECT
-          a._row AS budget_id
+          a._row
+        , a.quantity
+        , a.month AS DATE
         , a.product_id
-        , CONCAT(MONTHNAME(a.date),' ',YEAR(a.date)) as date
-        , a.quantity AS expected_quantity_sold
-        , (a.quantity * b.price) AS expected_income
-        , (a.quantity * b.product_unit_cost) AS expected_cost
-        , (a.quantity * b.price) - (a.quantity * b.product_unit_cost) AS expected_profit
-        , a.sync_date
-        , a.sync_time
-     
-    FROM stg_google_sheets_budget AS a left join stg_sql_server_products AS b
-    ON a.product_id=b.product_id
+        , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS sync_date
+        , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS sync_time
+    FROM src_google_sheets_budget AS a
     )
 
-SELECT * FROM stg_budget
+SELECT * FROM budget_v1

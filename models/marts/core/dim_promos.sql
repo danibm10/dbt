@@ -12,10 +12,10 @@ WITH stg_sql_server_promos AS (
 dim_promos AS (
     SELECT
           a.promo_id
-        , a.discount
+        , a.discount_usd
         , a.status
-        , a.fecha_sincronizacion as sync_date
-        , a.hora_sincronizacion as sync_time
+        , a.sync_date
+        , a.sync_time
     FROM stg_sql_server_promos AS a 
     )
 

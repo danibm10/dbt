@@ -6,16 +6,16 @@
 
 WITH stg_sql_server_promos AS (
     SELECT * 
-    FROM {{ ref('base_sql_server_promos') }}
+    FROM {{ source('src_sql_server', 'promos') }}
     ),
 
 stg_promos AS (
     SELECT
           a.promo_id
-        , a.discount
+        , a.discount as discount_usd
         , a.status
-        , a.fecha_sincronizacion
-        , a.hora_sincronizacion
+        , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS sync_date
+        , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS sync_time
     FROM stg_sql_server_promos AS a 
     )
 

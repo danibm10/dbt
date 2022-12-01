@@ -6,7 +6,7 @@
 
 WITH fct_events1 AS (
     SELECT * 
-    FROM {{ ref('stg_events')}}
+    FROM {{ ref('int_events')}}
     ),
 
 dim_year_month_day1 AS (
