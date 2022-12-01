@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_addresses
+    description: ""
+    columns:
+      - name: address_id
+        description: "PK de la tabla de address"
+
+      - name: zipcode
+        description: "Códido postal"
+
+      - name: country
+        description: "País"
+
+      - name: address
+        description: "Dirección"
+
+      - name: state
+        description: "Estado"
+
+      - name: sync_date
+        description: "Fecha sincronización del registro"
+
+      - name: sync_time
+        description: "Hora de sincronización del registro"

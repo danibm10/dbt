@@ -20,7 +20,7 @@ sources:
 
       - name: addresses
         description: >
-          Direcciones de envío de los pedidos.
+          Tabla que nos muestra las direcciones de envío de los pedidos.
         columns:
           - name: address_id
             description: >
@@ -48,7 +48,8 @@ sources:
               Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
 
       - name: events
-        description: ""
+        description: >
+          Tabla que nos muestran los eventos que un usuario ha realizado.
         columns:
           - name: event_id
             description: >
@@ -58,13 +59,21 @@ sources:
               - not_null
           - name: page_url
             description: >
-              Página web donde los usuarios acceden para comprar el producto.
+              Página web donde los usuarios acceden para realizar un tipo de evento referido a un producto.
           - name: event_type
             description: >
               Acción que realiza el usuario al entrar a la página web.
+            tests:
+               - accepted_values:
+                  values: ['checkout','package_shipped','add_to_cart','page_view']
+
           - name: user_id
             description: >
               PK de la tabla users.
+            tests:
+              - relationships:
+                  to: source('src_sql_server','users')
+                  field: user_id
           - name: product_id
             description: >
               PK de la tabla products.
@@ -74,6 +83,9 @@ sources:
           - name: created_at
             description: >
               Fecha en la que se crea el evento.
+            tests:
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: timestamp_ntz
           - name: order_id
             description: >
               PK de la tabla orders.
@@ -85,20 +97,22 @@ sources:
               Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
 
       - name: order_items
-        description: ""
+        description: >
+          Tabla que nos muestra los orders y los products ID que contiene cada order.
         columns:
           - name: order_id
             description: >
               PK de la tabla de order items.
             tests:
-              - unique
-              - not_null
+              - relationships:
+                  to: source('src_sql_server','orders')
+                  field: order_id
           - name: product_id
             description: >
               PK de la tabla products.
           - name: quantity
             description: >
-              cantidad de producto.
+              Cantidad de producto que hay en cada order.
           - name: _fivetran_deleted
             description: >
               Parámetro de nuestra herramienta de ingesta que nos indica si un registro ha sido borrado.
@@ -107,7 +121,8 @@ sources:
               Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
 
       - name: orders
-        description: ""
+        description: >
+          Tabla que nos da información sobre los pedidos.
         columns:
           - name: order_id
             description: >
@@ -124,9 +139,17 @@ sources:
           - name: address_id
             description: >
               PK de la tabla addresss.
+            tests:
+              - relationships:
+                  to: source('src_sql_server','addresses')
+                  field: address_id
+              - not_null
           - name: created_at
             description: >
               fecha cuando la compra se hizo.
+            tests:
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: timestamp_ntz
           - name: promo_id
             description: >
               PK de la tabla promos.
@@ -151,6 +174,9 @@ sources:
           - name: status
             description: >
               estado del pedido.
+            tests:
+               - accepted_values:
+                  values: ['delivered','preparing','shipped']
           - name: _fivetran_deleted
             description: >
               Parámetro de nuestra herramienta de ingesta que nos indica si un registro ha sido borrado.
@@ -159,7 +185,8 @@ sources:
               Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
 
       - name: products
-        description: ""
+        description: >
+          Tabla que nos muestra información sobre los productos de la empresa
         columns:
           - name: product_id
             description: >
@@ -175,7 +202,7 @@ sources:
               nombre del producto.
           - name: inventory
             description: >
-              número de unidades de producto que quedan en el inventario.
+              número de unidades de producto que quedan en el inventario. Esta columna no variará.
           - name: _fivetran_deleted
             description: >
               Parámetro de nuestra herramienta de ingesta que nos indica si un registro ha sido borrado.
@@ -184,7 +211,8 @@ sources:
               Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
 
       - name: promos
-        description: ""
+        description: >
+          Tabla que nos da información sobre las promos que se aplican a los orders.
         columns:
           - name: promo_id
             description: >
@@ -198,6 +226,9 @@ sources:
           - name: status
             description: >
               estado de la promoción.
+            tests:
+               - accepted_values:
+                  values: ['inactive','active']
           - name: _fivetran_deleted
             description: >
               Parámetro de nuestra herramienta de ingesta que nos indica si un registro ha sido borrado.
@@ -206,7 +237,8 @@ sources:
               Parámetro de nuestra herramienta de ingesta que nos indica la hora a la que se sincronizaron los datos.
 
       - name: users
-        description: ""
+        description: >
+          Nos muestra información sobre los usuarios.
         columns:
           - name: user_id
             description: >

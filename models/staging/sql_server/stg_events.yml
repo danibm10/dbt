@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: stg_events
+    description: ""
+    columns:
+      - name: event_id
+        description: "PK de la tabla de events"
+
+      - name: page_url
+        description: "Página web donde los usuarios acceden para realizar un tipo de evento referido a un producto"
+
+      - name: event_type
+        description: "Acción que realiza el usuario al entrar a la página web"
+
+      - name: user_id
+        description: "PK de la tabla users"
+
+      - name: product_id
+        description: "PK de la tabla products"
+
+      - name: session_id
+        description: "Sesión ID del evento"
+
+      - name: created_at_day
+        description: "Fecha de creación del evento"
+
+      - name: created_at_time
+        description: "Hora de creación del evento"
+
+      - name: order_id
+        description: "PK de la tabla de orders"
+
+      - name: sync_date
+        description: "Fecha de sincronización del registro"
+
+      - name: sync_time
+        description: "Hora de sincronización del registro"
