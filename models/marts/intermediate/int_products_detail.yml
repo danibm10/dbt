@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: int_products_detail
+    description: "tabla que contiene el detalle del producto"
+    columns:
+      - name: product_detail_id
+        description: "llave subrogada que identifica de manera única cada detalle de producto"
+
+      - name: product_id
+        description: "PK de la tabla, identifica de manera única cada producto"
+
+      - name: product_unit_cost_usd
+        description: "coste unitario de producto en dólares"
+
+      - name: price_usd
+        description: "precio de cada producto en dólares"
+
+      - name: _fivetran_synced
+        description: "Fecha y hora de sincronización del registro"

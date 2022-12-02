@@ -6,7 +6,7 @@
 
 WITH dim_year_month1 AS (
     SELECT * 
-    FROM {{ ref('stg_year_month') }}
+    FROM {{ ref('int_year_month') }}
     ),
 
 dim_year_month AS (

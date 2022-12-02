@@ -147,9 +147,6 @@ sources:
           - name: created_at
             description: >
               fecha cuando la compra se hizo.
-            tests:
-              - dbt_expectations.expect_column_values_to_be_of_type:
-                  column_type: timestamp_ntz
           - name: promo_id
             description: >
               PK de la tabla promos.
@@ -159,6 +156,8 @@ sources:
           - name: order_cost
             description: >
               coste del order.
+            tests:
+              - positive_values
           - name: user_id
             description: >
               PK de la tabla users.

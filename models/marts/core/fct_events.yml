@@ -1,0 +1,38 @@
+ version: 2
+
+models:
+  - name: fct_events
+    description: ""
+    columns:
+      - name: event_id
+        description: "PK de la tabla de events"
+
+      - name: user_id
+        description: "PK de la tabla users"
+
+      - name: product_id
+        description: "PK de la tabla products"
+
+      - name: year_month_day_id
+        description: "PK de la tabla year_month_day, identifica de manera única cada día del año"
+
+      - name: order_id
+        description: "PK de la tabla de orders"
+
+      - name: session_id
+        description: "Sesión ID del evento"
+
+      - name: page_url
+        description: "Página web donde los usuarios acceden para realizar un tipo de evento referido a un producto"
+
+      - name: event_type
+        description: "Acción que realiza el usuario al entrar a la página web"
+
+      - name: created_at_time
+        description: "Hora de creación del evento"
+
+      - name: momento_del_dia
+        description: "momento del día en el que ocurre el evento"
+
+      - name: purchase_indicator
+        description: "Esta columna me indica si el usuario finalmente ha comprado el producto o no"

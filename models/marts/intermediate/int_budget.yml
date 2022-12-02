@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: int_budget
+    description: ""
+    columns:
+      - name: budget_id
+        description: "PK de la tabla, identificado único del budget"
+
+      - name: product_id
+        description: "identificador único del producto"
+
+      - name: date
+        description: "fecha en la que la empresa espera vender el producto"
+
+      - name: expected_quantity_sold
+        description: "previsión del número de unidades que la empresa espera vender"
+
+      - name: product_unit_cost_usd
+        description: "coste unitario del producto"
+
+      - name: sync_date
+        description: "fecha de sincronización del registro"
+
+      - name: sync_time
+        description: "hora de sincronización del registro"

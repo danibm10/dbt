@@ -16,7 +16,7 @@ product_unit_cost AS (
  
  
 
-stg_budget AS (
+int_budget AS (
     SELECT
           a._row AS budget_id
         , a.product_id
@@ -30,4 +30,4 @@ stg_budget AS (
     ON a.product_id=c.product_id
     )
 
-SELECT * FROM stg_budget
+SELECT * FROM int_budget

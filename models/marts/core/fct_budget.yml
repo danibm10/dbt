@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: fct_budget
+    description: ""
+    columns:
+      - name: budget_id
+        description: "PK de la tabla, identificado único del budget"
+
+      - name: product_id
+        description: "PK de la tabla, identifica de manera única cada producto"
+
+      - name: month_year_id
+        description: "PK de la tabla month_year, identifica de manera única cada mes del año"
+
+      - name: expected_quantity_sold
+        description: "previsión del número de unidades que la empresa espera vender"
+
+      - name: expected_income_usd
+        description: "previsión de ingresos. Se ha calculado multiplicando el precio de venta del producto por la cantidad esperada vendida"
+
+      - name: expected_cost_usd
+        description: "previsión de coste. Se ha calculado multiplicando el coste unitario de venta del producto por la cantidad esperada vendida"
+
+      - name: expected_profit_usd
+        description: "previsión de beneficio. Se ha calculado como la diferencia de ingresos y coste"
+
+      - name: sync_date
+        description: "fecha de sincronización del registro"
+
+      - name: sync_time
+        description: "hora de sincronización del registro"

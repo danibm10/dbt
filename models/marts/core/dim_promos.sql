@@ -12,7 +12,7 @@ WITH stg_sql_server_promos AS (
 dim_promos AS (
     SELECT
           a.promo_id
-        , a.discount_usd
+        , a.discount as discount_usd
         , a.status
         , a.sync_date
         , a.sync_time

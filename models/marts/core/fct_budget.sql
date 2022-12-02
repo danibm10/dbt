@@ -15,7 +15,7 @@ stg_products AS (
     ),
 
 
-dim_year_month_day1 AS (
+dim_year_month AS (
     SELECT * 
     FROM {{ ref('dim_year_month') }}
     ),  
@@ -32,7 +32,7 @@ fct_budget AS (
         , a.sync_date
         , a.sync_time 
           
-    FROM dim_google_sheets_budget AS a LEFT JOIN dim_year_month_day1 AS b
+    FROM dim_google_sheets_budget AS a LEFT JOIN dim_year_month AS b
     ON a.date = b.month_year_id
     LEFT JOIN stg_products AS c
     ON a.product_id=c.product_id

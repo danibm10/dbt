@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: fct_orders
+    description: ""
+    columns:
+      - name: order_id
+        description: "PK de la tabla, identifica de manera única cada pedido realizado"
+
+      - name: user_id
+        description: "PK de la tabla de stg_users, identifica de manera única cada usuario"
+
+      - name: year_month_day_id
+        description: "PK de la tabla year_month_day, identifica de manera única cada día del año"
+
+      - name: promo_id
+        description: "tipo de promo que se aplica al pedido"
+
+      - name: discount_usd
+        description: "descuento aplicado a cada pedido, en dólares"
+
+      - name: shipping_service
+        description: "empresa realizada para realizar el envío"
+
+      - name: shipping_cost_usd
+        description: "coste del envío en dólares"
+
+      - name: delivery_date
+        description: "fecha de entrega del pedido"
+
+      - name: tracking_id
+        description: "identifica el envío"
+
+      - name: status
+        description: "estado del pedido"
+
+      - name: delivery_time
+        description: "hora de entrega del pedido"
+
+      - name: order_total_usd
+        description: "total del pedido en dólares"
+
+      - name: estimated_delivery_days
+        description: "diferencia entre la fecha de entrega y cuando se pronosticó que iba a llegar el pedido"
+
+      - name: orders_time
+        description: "esta columna nos indica si el pedido se ha retrasado o si ha llegado antes de lo previsto"
+
+      - name: sync_date
+        description: "fecha de sincronización del registro"
+
+      - name: sync_time
+        description: "hora de sincronización del registro"

@@ -9,7 +9,7 @@ with date_spine as (
 
 ),
 
-stg_year_month AS (
+int_year_month AS (
     SELECT
           a.date_day
         , MONTHNAME(a.date_day) AS month
@@ -17,5 +17,5 @@ stg_year_month AS (
     FROM date_spine AS a 
     )
 
-SELECT * FROM stg_year_month
+SELECT * FROM int_year_month
 

@@ -1,7 +1,7 @@
  version: 2
 
 models:
-  - name: stg_promos
+  - name: dim_promos
     description: ""
     columns:
       - name: promo_id

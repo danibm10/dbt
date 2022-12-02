@@ -17,7 +17,7 @@ dim_year_month_day1 AS (
 fct_events AS (
     SELECT
           a.event_id
-        , a.client_id
+        , a.user_id
         , a.product_id
         , b.year_month_day_id
         , a.order_id

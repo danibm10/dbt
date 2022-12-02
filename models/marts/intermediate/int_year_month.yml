@@ -1,0 +1,14 @@
+ version: 2
+
+models:
+  - name: int_year_month
+    description: "Tabla que contiene los meses del año 2021"
+    columns:
+      - name: date_day
+        description: "Columna que contiene todos los días del año 2021"
+
+      - name: month
+        description: "Mes"
+
+      - name: year
+        description: "Año"

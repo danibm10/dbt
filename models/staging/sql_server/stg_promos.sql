@@ -12,7 +12,7 @@ WITH stg_sql_server_promos AS (
 stg_promos AS (
     SELECT
           a.promo_id
-        , a.discount as discount_usd
+        , a.discount
         , a.status
         , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS sync_date
         , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS sync_time
