@@ -59,9 +59,12 @@ models:
         {%- endif -%}
       core:
         +schema: core
+        +docs:
+          node_color: "gold"
       intermediate:
         +schema: intermediate
-        
+        +docs:
+          node_color: "red"
 snapshots:
   +sql_header: "alter session set timezone = 'Europe/Madrid';alter session set week_start = 7;"
   +transient: false
@@ -72,3 +75,5 @@ snapshots:
         {%- else -%} {{target.database}}_silver_db_alumno1
         {%- endif -%}
   +target_schema: snapshots
+  +docs:
+    node_color: "brown"

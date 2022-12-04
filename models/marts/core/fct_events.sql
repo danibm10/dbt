@@ -18,9 +18,9 @@ fct_events AS (
     SELECT
           a.event_id
         , a.user_id
-        , a.product_id
+        , {{ eliminar_nulos('a.product_id',"''") }} as product_id  
         , b.year_month_day_id
-        , a.order_id
+        , {{ eliminar_nulos('a.order_id',"''") }} as order_id  
         , a.session_id
         , a.page_url
         , a.event_type

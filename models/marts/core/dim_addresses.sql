@@ -13,7 +13,7 @@ dim_addresses AS (
           a.address_id
         , a.address
         , a.zipcode
-        , {{ eliminar_nulos('b.city', 'NULL', "'Unknown'") }} as city 
+        , {{ eliminar_nulos('b.city','null') }} as city 
         , a.state
         , a.country
         , a.sync_date

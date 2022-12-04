@@ -14,9 +14,9 @@ WITH fct_orders1 AS (
   FROM {{ ref('dim_year_month_day') }}
     ), 
 
-   dim_promos AS (
+   stg_promos AS (
   SELECT * 
-  FROM {{ ref('dim_promos') }}
+  FROM {{ ref('stg_promos') }}
     ), 
 
 fct_orders AS (
@@ -24,7 +24,7 @@ fct_orders AS (
           a.order_id
         , a.user_id
         , b.year_month_day_id
-        , a.promo_id
+        , c.promo_id
         , c.discount_usd
         , a.shipping_service
         , a.shipping_cost_usd
@@ -44,8 +44,8 @@ fct_orders AS (
         
     FROM fct_orders1 AS a LEFT JOIN dim_year_month_day1 AS b
     ON a.fecha_convertida = b.year_month_day_id
-    LEFT JOIN dim_promos AS c
-    ON a.promo_id=c.promo_id
+    LEFT JOIN stg_promos AS c
+    ON a.promo_id=c.promo_name
     )
 
 SELECT * FROM fct_orders
