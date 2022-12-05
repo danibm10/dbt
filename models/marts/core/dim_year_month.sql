@@ -15,7 +15,7 @@ dim_year_month AS (
     
           CONCAT(MONTHNAME(a.date_day),' ',YEAR(a.date_day)) AS month_year_id
         , MONTHNAME(a.date_day) AS month
-        , YEAR(a.date_day) AS year
+        , CAST(YEAR(a.date_day) AS VARCHAR) AS year
         
         
     FROM date_spine AS a 

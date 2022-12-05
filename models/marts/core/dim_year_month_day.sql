@@ -14,7 +14,7 @@ dim_year_month_day AS (
           CONCAT(DAY(a.date_day),' ',MONTHNAME(a.date_day),' ',YEAR(a.date_day)) as year_month_day_id
         , DAY(a.date_day) AS day
         , MONTHNAME(a.date_day) AS month
-        , YEAR(a.date_day) AS year
+        , CAST(YEAR(a.date_day) AS VARCHAR) AS year
         , DAYNAME(a.date_day) AS day_name
         , WEEK(a.date_day) AS week
         , QUARTER(a.date_day) AS quarter
@@ -25,12 +25,7 @@ dim_year_month_day AS (
             when MONTHNAME(a.date_day) = 'Apr' then '1'
             when MONTHNAME(a.date_day) = 'May' then '1'
             when MONTHNAME(a.date_day) = 'Jun' then '1'
-            when MONTHNAME(a.date_day) = 'Jul' then '2'
-            when MONTHNAME(a.date_day) = 'Aug' then '2'
-            when MONTHNAME(a.date_day) = 'Sep' then '2'
-            when MONTHNAME(a.date_day) = 'Oct' then '2'
-            when MONTHNAME(a.date_day) = 'Nov' then '2'
-            when MONTHNAME(a.date_day) = 'Dec' then '2'
+            else '2'
           
             end as semester
 

@@ -7,7 +7,7 @@ WITH stg_sql_server_products AS (
 dim_products AS (
     SELECT
           a.product_id
-        , a.name
+        , a.name AS product_name
         , a.inventory as security_stock
         , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS sync_date
         , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS sync_time
