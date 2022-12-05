@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: int_users_detail
-    description: ""
+    description: "tabla que nos muestra información sobre el detalle de usuarios"
+    tags: ['silver']
     columns:
       - name: user_detail_id
         description: "llave subrogada creada para identificar el detalle de cada cliente"

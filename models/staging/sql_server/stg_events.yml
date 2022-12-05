@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: stg_events
-    description: ""
+    description: "tabla que nos muestra información sobre los eventos que realiza un usuario sobre un producto determinado"
+    tags: ['silver']
     columns:
       - name: event_id
         description: "PK de la tabla de events"

@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: int_budget
-    description: ""
+    description: "tabla que nos muestra información sobre el presupuesto"
+    tags: ['silver']
     columns:
       - name: budget_id
         description: "PK de la tabla, identificado único del budget"

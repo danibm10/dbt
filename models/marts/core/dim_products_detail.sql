@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 WITH intermediate_product AS (
     SELECT * 
     FROM {{ ref('snap_dim_products_detail') }}

@@ -1,3 +1,10 @@
+{{
+    config(
+      tags= 'test',
+    )
+}}
+
+
 select
 a.delivery_date
 from

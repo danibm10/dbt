@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: dim_users
+    description: "tabla que nos muestra información de usuarios que no va a cambiar con mucha frecuencia"
+    tags: ['gold']
+    columns:
+      - name: user_id
+        description: "PK de la tabla, identifica de manera única a cada usuario"
+
+      - name: first_name
+        description: "nombre del usuario"
+
+      - name: last_name
+        description: "apellido del usuario"
+
+      - name: sync_date
+        description: "fecha que nos muestra desde cuando el registro es válido"
+
+      - name: sync_time
+        description: "fecha que nos indica hasta cuando el registro es válido, si tenemos null quiere decir que el registro sigue activo"

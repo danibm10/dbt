@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 WITH dim_google_sheets_budget AS (
     SELECT * 
     FROM {{ ref('int_budget')}}

@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 WITH fct_orders1 AS (
     SELECT * 
     FROM {{ ref('int_orders') }}

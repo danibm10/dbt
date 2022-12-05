@@ -21,6 +21,7 @@ sources:
       - name: addresses
         description: >
           Tabla que nos muestra las direcciones de envío de los pedidos.
+        tags: ['bronze']
         columns:
           - name: address_id
             description: >
@@ -50,6 +51,7 @@ sources:
       - name: events
         description: >
           Tabla que nos muestran los eventos que un usuario ha realizado.
+        tags: ['bronze']
         columns:
           - name: event_id
             description: >
@@ -70,6 +72,7 @@ sources:
           - name: user_id
             description: >
               PK de la tabla users.
+            tags: ['bronze']
             tests:
               - relationships:
                   to: source('src_sql_server','users')
@@ -99,6 +102,7 @@ sources:
       - name: order_items
         description: >
           Tabla que nos muestra los orders y los products ID que contiene cada order.
+        tags: ['bronze']
         columns:
           - name: order_id
             description: >
@@ -123,6 +127,7 @@ sources:
       - name: orders
         description: >
           Tabla que nos da información sobre los pedidos.
+        tags: ['bronze']
         columns:
           - name: order_id
             description: >
@@ -186,6 +191,7 @@ sources:
       - name: products
         description: >
           Tabla que nos muestra información sobre los productos de la empresa
+        tags: ['bronze']
         columns:
           - name: product_id
             description: >
@@ -212,6 +218,7 @@ sources:
       - name: promos
         description: >
           Tabla que nos da información sobre las promos que se aplican a los orders.
+        tags: ['bronze']
         columns:
           - name: promo_id
             description: >
@@ -238,6 +245,7 @@ sources:
       - name: users
         description: >
           Nos muestra información sobre los usuarios.
+        tags: ['bronze']
         columns:
           - name: user_id
             description: >

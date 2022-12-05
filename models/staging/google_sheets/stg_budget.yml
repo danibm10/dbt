@@ -3,6 +3,7 @@
 models:
   - name: stg_budget
     description: "En esta tabla se muestra la previsión de venta de la empresa"
+    tags: ['silver']
     columns:
       - name: _row
         description: "id del presupuesto"

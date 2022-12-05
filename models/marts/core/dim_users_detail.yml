@@ -1,0 +1,24 @@
+ version: 2
+
+models:
+  - name: dim_users_detail
+    description: "tabla de usuarios con información que normalmente no va a cambiar con mucha frecuencia"
+    tags: ['gold']
+    columns:
+      - name: user_detail_id
+        description: "llave subrogada creada para identificar el detalle de cada cliente"
+
+      - name: user_id
+        description: "PK de la tabla, identifica de manera única a cada usuario"
+
+      - name: phone_number
+        description: "número de teléfono del usuario"
+
+      - name: email
+        description: "email de cada usuario"
+
+      - name: valid_from
+        description: "fecha que nos indica desde cuando el registro es válido"
+
+      - name: valid_to
+        description: "fecha que nos indica hasta cuando el registro es válido, si tenemos null quiere decir que el registro sigue activo"

@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 WITH dim_sql_server_users AS (
     SELECT * 
     FROM {{ ref('stg_users')}}

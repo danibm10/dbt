@@ -3,6 +3,7 @@ version: 2
 models:
   - name: int_products_detail
     description: "tabla que contiene el detalle del producto"
+    tags: ['silver']
     columns:
       - name: product_detail_id
         description: "llave subrogada que identifica de manera única cada detalle de producto"

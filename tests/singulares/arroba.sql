@@ -1,3 +1,9 @@
+{{
+    config(
+      tags= 'test',
+    )
+}}
+
 select
 a.email
 from

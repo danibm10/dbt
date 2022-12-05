@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: stg_users
-    description: ""
+    description: "tabla que nos muestra información sobre los usuarios"
+    tags: ['silver']
     columns:
       - name: user_id
         description: "PK de la tabla, identifica de manera única a cada usuario"

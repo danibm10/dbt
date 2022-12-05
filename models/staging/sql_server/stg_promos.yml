@@ -3,6 +3,7 @@
 models:
   - name: stg_promos
     description: "esta tabla contiene información sobre las promociones que se aplican a los orders"
+    tags: ['silver']
     columns:
       - name: promo_id
         description: "identificador único de las promociones"

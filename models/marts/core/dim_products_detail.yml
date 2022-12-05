@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: dim_products_detail
-    description: ""
+    description: "tabla que contiene el detalle de cada producto"
+    tags: ['gold']
     tests:
     - dbt_expectations.expect_table_row_count_to_be_between:
         max_value: 30

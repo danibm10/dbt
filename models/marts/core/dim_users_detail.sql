@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 WITH intermediate_client AS (
     SELECT * 
     FROM {{ ref('snap_dim_users_detail') }}

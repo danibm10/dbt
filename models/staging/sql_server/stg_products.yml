@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: stg_products
-    description: ""
+    description: "tabla que nos muestra información sobre los productos"
+    tags: ['silver']
     columns:
       - name: product_id
         description: "PK de la tabla, identifica de manera única cada producto"

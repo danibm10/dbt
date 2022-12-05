@@ -3,6 +3,7 @@
 models:
   - name: fct_events
     description: ""
+    tags: ['gold']
     columns:
       - name: event_id
         description: "PK de la tabla de events"

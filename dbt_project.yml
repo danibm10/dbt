@@ -38,6 +38,8 @@ models:
 
     staging:
       +materialized: view
+      +tags: ['staging']
+      +tags: ['silver']
       +database: |  
         {%- if  target.name == 'user_dev' -%} dev_silver_db_alumno1
         {%- elif target.name == 'ci' -%} dev_silver_db_alumno1 
@@ -59,10 +61,12 @@ models:
         {%- endif -%}
       core:
         +schema: core
+        +tags: ['gold']
         +docs:
           node_color: "gold"
       intermediate:
         +schema: intermediate
+        +tags: ['silver']
         +docs:
           node_color: "red"
 snapshots:

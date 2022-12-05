@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: fct_orders
-    description: ""
+    description: "tabla de hechos que nos muestra información sobre los pedidos"
+    tags: ['gold']
     columns:
       - name: order_id
         description: "PK de la tabla, identifica de manera única cada pedido realizado"

@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: snap_dim_products_detail
+    description: "snapshot que nos va a registrar los cambios que se produzcan en los detalles de los productos especificados en la tabla"
+    columns:
+      - name: product_detail_id
+        description: "llave subrogada que identifica de manera única cada detalle de producto"
+
+      - name: product_id
+        description: "PK de la tabla, identifica de manera única cada producto"
+
+      - name: product_unit_cost
+        description: "coste unitario de cada producto"
+
+      - name: price_usd
+        description: "precio de cada producto en dólares"
+
+      - name: _fivetran_synced
+        description: "Fecha y hora de sincronización del registro"
+
+      - name: dbt_scd_id
+        description: "id de la actualización del registro"
+
+      - name: dbt_updated_at
+        description: "fecha en la que se realizó la actualización del registro"
+
+      - name: dbt_valid_from
+        description: "fecha desde la que el registro está activo"
+
+      - name: dbt_valid_to
+        description: "fecha hasta la que el registro está activo, si hay un null quiere decir que ese registro sigue activo"
+
+      - name: product_unit_cost_usd
+        description: "coste unitario de producto en dólares"

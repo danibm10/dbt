@@ -1,3 +1,10 @@
+{{
+    config(
+      tags= 'test',
+    )
+}}
+
+
 select
 a.product_unit_cost_usd
 from

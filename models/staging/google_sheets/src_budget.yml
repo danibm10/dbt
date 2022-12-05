@@ -26,6 +26,7 @@ sources:
         loaded_at_field: _fivetran_synced
         description: >
           Data about budget in demo.
+        tags: ['bronze']
         columns:
           - name: _row
             description: >

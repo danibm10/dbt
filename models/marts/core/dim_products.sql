@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 WITH stg_sql_server_products AS (
     SELECT * 
     FROM {{ ref('stg_products') }}

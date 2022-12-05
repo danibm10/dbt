@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: stg_addresses
-    description: ""
+    description: "tabla que nos muestre información sobre las direcciones de envío"
+    tags: ['silver']
     columns:
       - name: address_id
         description: "PK de la tabla de address"

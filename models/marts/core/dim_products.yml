@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: dim_products
+    description: "tabla que contiene información sobre los productos que normalmente no va a cambiar con mucha frecuencia"
+    tags: ['gold']
+    tests:
+    - dbt_expectations.expect_table_row_count_to_be_between:
+        max_value: 30
+    columns:
+      - name: product_id
+        description: "PK de la tabla, identifica de manera única cada producto"
+
+      - name: name
+        description: "nombre del producto"
+
+      - name: security_stock
+        description: "stock de seguridad"
+
+      - name: sync_date
+        description: "fecha de sincronización del registro"
+
+      - name: sync_time
+        description: "hora de sincronización del registro"

@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: int_events
-    description: ""
+    description: "tabla que nos muestra información sobre los eventos"
+    tags: ['silver']
     columns:
       - name: event_id
         description: "PK de la tabla de events"

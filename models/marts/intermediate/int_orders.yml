@@ -2,7 +2,8 @@ version: 2
 
 models:
   - name: int_orders
-    description: ""
+    description: "tabla que nos muestra información sobre los pedidos"
+    tags: ['silver']
     columns:
       - name: order_id
         description: "PK de la tabla, identifica de manera única cada pedido realizado"

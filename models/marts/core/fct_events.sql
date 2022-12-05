@@ -1,9 +1,3 @@
-{{
-  config(
-    materialized='view'
-  )
-}}
-
 WITH fct_events1 AS (
     SELECT * 
     FROM {{ ref('int_events')}}

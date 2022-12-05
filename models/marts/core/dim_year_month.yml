@@ -1,0 +1,15 @@
+ version: 2
+
+models:
+  - name: dim_year_month
+    description: "tabla que nos muestra información de fechas con granularidad mes"
+    tags: ['gold']
+    columns:
+      - name: month_year_id
+        description: "PK de la tabla, nos identifica de manera única cada mes del año"
+
+      - name: month
+        description: "Mes"
+
+      - name: year
+        description: "Año"

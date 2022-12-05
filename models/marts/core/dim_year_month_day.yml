@@ -1,0 +1,30 @@
+ version: 2
+
+models:
+  - name: dim_year_month_day
+    description: "tabla que nos muestra información sobre fechas con granularidad de día"
+    tags: ['gold']
+    columns:
+      - name: year_month_day_id
+        description: "PK de la tabla, identifica de manera única cada registro en la tabla"
+
+      - name: day
+        description: "día del año"
+
+      - name: month
+        description: "mes del año"
+
+      - name: year
+        description: "año"
+
+      - name: day_name
+        description: "nombre del día"
+
+      - name: week
+        description: "número de semana"
+
+      - name: quarter
+        description: "trimestre"
+
+      - name: semester
+        description: "semestre"
