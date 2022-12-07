@@ -20,7 +20,7 @@ int_budget AS (
     SELECT
           a._row AS budget_id
         , a.product_id
-        , CONCAT(MONTHNAME(a.date),' ',YEAR(a.date)) as date
+        , CONCAT(MONTH(a.date),' ',YEAR(a.date)) as date
         , a.quantity AS expected_quantity_sold
         , c.product_unit_cost as product_unit_cost_usd
         , a.sync_date

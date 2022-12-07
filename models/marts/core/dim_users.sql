@@ -9,6 +9,8 @@ dim_users AS (
           a.user_id
         , a.first_name
         , a.last_name
+        , a.phone_number
+        , a.email
         , CAST(SUBSTRING(_fivetran_synced, 1, 10) AS DATE) AS sync_date
         , CAST(SUBSTRING(_fivetran_synced, 12, 8) AS TIME) AS sync_time
           

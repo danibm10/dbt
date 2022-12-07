@@ -15,7 +15,7 @@ FROM {{ ref('dim_year_month') }}
 
 dim_products_detail1 AS (
 SELECT * 
-FROM {{ ref('dim_products_detail') }}
+FROM {{ ref('dim_products') }}
     ), 
 
 
@@ -23,7 +23,7 @@ fct_product_profit AS (
     SELECT (
         {{ dbt_utils.surrogate_key(['a.product_id', 'b.creation_date','a.quantity','c.price_usd * a.quantity']) }}) as product_profit_id
         , a.product_id
-        , CONCAT(MONTHNAME(b.creation_date),' ',YEAR(b.creation_date)) AS month_year_id_profit
+        , CONCAT(MONTH(b.creation_date),' ',YEAR(b.creation_date)) AS month_year_id_profit
         , a.quantity
         , (c.price_usd * a.quantity) as total_income
         , (c.product_unit_cost_usd * a.quantity) as total_cost
@@ -43,14 +43,14 @@ fct_product_profit1 AS (
     SELECT
           a.product_profit_id
         , a.product_id
-        , b.month_year_id
-        , a.quantity
+        , b.year_month_id
+        , a.quantity as sales_quantity
         , a.total_income
         , a.total_cost
-        , a.total_profit
+        , ROUND(a.total_profit,2) as total_profit
 
     FROM fct_product_profit AS a left join dim_year_month AS b
-    ON a.month_year_id_profit=b.month_year_id
+    ON a.month_year_id_profit=b.year_month_id
 
 )
 

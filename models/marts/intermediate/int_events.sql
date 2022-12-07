@@ -27,7 +27,7 @@ int_events AS (
             else 'madrugada'
             end as momento_del_dia
 
-        , CONCAT(DAY(a.created_at_day),' ',MONTHNAME(a.created_at_day),' ',YEAR(a.created_at_day)) AS created_at
+        , a.created_at_day
           
     FROM stg_sql_server_events AS a
     )

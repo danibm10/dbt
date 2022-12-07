@@ -18,7 +18,6 @@ stg_orders AS (
         , REPLACE(a.shipping_service, 'usps','ups') AS shipping_service
         , a.shipping_cost_usd
         , a.creation_date
-        , CONCAT(DAY(a.creation_date),' ',MONTHNAME(a.creation_date),' ',YEAR(a.creation_date)) AS fecha_convertida
         , a.estimated_delivery_date
         , a.delivery_date
         , a.delivery_time

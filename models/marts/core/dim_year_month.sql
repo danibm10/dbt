@@ -13,7 +13,7 @@ with date_spine as (
 dim_year_month AS (
     SELECT DISTINCT 
     
-          CONCAT(MONTHNAME(a.date_day),' ',YEAR(a.date_day)) AS month_year_id
+          CONCAT(MONTH(a.date_day),' ',YEAR(a.date_day)) AS year_month_id
         , MONTHNAME(a.date_day) AS month
         , CAST(YEAR(a.date_day) AS VARCHAR) AS year
         

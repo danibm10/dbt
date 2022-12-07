@@ -26,7 +26,7 @@ fct_events AS (
             end as purchase_indicator
           
     FROM fct_events1 AS a LEFT JOIN dim_year_month_day1 AS b
-    ON a.created_at = b.year_month_day_id
+    ON a.created_at_day = b.year_month_day_id
     )
 
 SELECT * FROM fct_events
