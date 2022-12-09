@@ -18,6 +18,7 @@ fct_orders AS (
           a.order_id
         , a.user_id
         , b.year_month_day_id
+        , a.address_id
         , c.promo_id
         , a.shipping_service
         , a.delivery_date

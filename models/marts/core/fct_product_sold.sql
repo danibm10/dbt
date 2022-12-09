@@ -32,6 +32,12 @@ fct_product_sold AS (
         , a.address_id
         , a.order_id
         , c.year_month_day_id
+        , CASE
+            when HOUR(a.creation_time) between 6 and 14 then 'mañana'
+            when HOUR(a.creation_time) between 14 and 20 then 'tarde'
+            when HOUR(a.creation_time) between 20 and 23 then 'noche'
+            else 'madrugada'
+            end as momento_del_dia
         , b.quantity as sales_quantity
         , (b.quantity * e.price_usd) AS sales_usd
 

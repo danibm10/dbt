@@ -18,6 +18,7 @@ stg_orders AS (
         , REPLACE(a.shipping_service, 'usps','ups') AS shipping_service
         , a.shipping_cost_usd
         , a.creation_date
+        , a.creation_time
         , a.estimated_delivery_date
         , a.delivery_date
         , a.delivery_time
