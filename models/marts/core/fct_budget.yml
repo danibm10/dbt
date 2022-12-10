@@ -5,8 +5,12 @@ models:
     description: "tabla que nos muestra información sobre el presupuesto de la empresa"
     tags: ['gold']
     columns:
+    
       - name: budget_id
         description: "PK de la tabla, identificado único del budget"
+        tests:
+        - dbt_expectations.expect_column_values_to_be_increasing:
+            sort_column: budget_id
 
       - name: product_id
         description: "PK de la tabla, identifica de manera única cada producto"

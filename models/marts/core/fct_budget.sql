@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key=['product_id','year_month_id']
+    )
+}}
+
+
 WITH dim_google_sheets_budget AS (
     SELECT * 
     FROM {{ ref('int_budget')}}
@@ -36,3 +44,8 @@ fct_budget AS (
     )
 
 SELECT * FROM fct_budget
+
+{% if is_incremental() %}
+where sync_date>= (select max(sync_date) from {{this}})
+
+{% endif %}

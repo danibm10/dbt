@@ -5,8 +5,8 @@ models:
     description: "tabla que contiene información sobre los productos que normalmente no va a cambiar con mucha frecuencia"
     tags: ['gold']
     tests:
-    - dbt_expectations.expect_table_row_count_to_be_between:
-        max_value: 30
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          max_value: 30
     columns:
       - name: product_id
         description: "PK de la tabla, identifica de manera única cada producto"

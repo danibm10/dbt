@@ -24,7 +24,9 @@ fct_events AS (
             when a.order_id = '' then 'No Compra'
             else 'Compra'
             end as purchase_indicator
-          
+        , a.sync_date
+        , a.sync_time
+
     FROM fct_events1 AS a LEFT JOIN dim_year_month_day1 AS b
     ON a.created_at_day = b.year_month_day_id
     )

@@ -28,6 +28,8 @@ int_events AS (
             end as momento_del_dia
 
         , a.created_at_day
+        , a.sync_date
+        , a.sync_time
           
     FROM stg_sql_server_events AS a
     )
