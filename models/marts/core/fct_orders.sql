@@ -32,7 +32,7 @@ fct_orders AS (
             when a.estimated_delivery_days<1 then 'Antes de lo esperado'
             end as orders_time
 
-        , {{ eliminar_nulos_bueno('c.discount_usd') }} as discount_usd
+        , CAST({{ eliminar_nulos_bueno('c.discount_usd') }} as VARCHAR) as discount_usd
         , a.shipping_cost_usd
         , a.order_total_usd
         , a.sync_date
