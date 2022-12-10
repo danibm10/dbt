@@ -1,9 +1,8 @@
- version: 2
+version: 2
 
 models:
   - name: fct_events
-    description: ""
-    tags: ['gold']
+    description: "tabla que nos muestra información sobre los eventos que un usuario realiza sobre un determinado producto"
     columns:
       - name: event_id
         description: "PK de la tabla de events"
@@ -15,7 +14,7 @@ models:
         description: "PK de la tabla products"
 
       - name: year_month_day_id
-        description: "PK de la tabla year_month_day, identifica de manera única cada día del año"
+        description: "PK de la tabla, identifica de manera única cada registro en la tabla"
 
       - name: order_id
         description: "PK de la tabla de orders"
@@ -32,8 +31,11 @@ models:
       - name: created_at_time
         description: "Hora de creación del evento"
 
-      - name: momento_del_dia
-        description: "momento del día en el que ocurre el evento"
-
       - name: purchase_indicator
-        description: "Esta columna me indica si el usuario finalmente ha comprado el producto o no"
+        description: "columna que nos indica si ha habido una compra o no"
+
+      - name: sync_date
+        description: "Fecha de sincronización del registro"
+
+      - name: sync_time
+        description: "Hora de sincronización del registro"

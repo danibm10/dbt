@@ -19,6 +19,12 @@ models:
 
       - name: sync_date
         description: "fecha de sincronización del registro"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
 
       - name: sync_time
         description: "hora de sincronización del registro"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: time

@@ -2,8 +2,7 @@ version: 2
 
 models:
   - name: fct_orders
-    description: "tabla de hechos que nos muestra información sobre los pedidos"
-    tags: ['gold']
+    description: "tabla que nos muestra información sobre los pedidos"
     columns:
       - name: order_id
         description: "PK de la tabla, identifica de manera única cada pedido realizado"
@@ -12,19 +11,16 @@ models:
         description: "PK de la tabla de stg_users, identifica de manera única cada usuario"
 
       - name: year_month_day_id
-        description: "PK de la tabla year_month_day, identifica de manera única cada día del año"
+        description: "PK de la tabla, identifica de manera única cada registro en la tabla"
+
+      - name: address_id
+        description: "PK de la tabla de address"
 
       - name: promo_id
-        description: "tipo de promo que se aplica al pedido"
-
-      - name: discount_usd
-        description: "descuento aplicado a cada pedido, en dólares"
+        description: "identificador único de las promociones"
 
       - name: shipping_service
         description: "empresa realizada para realizar el envío"
-
-      - name: shipping_cost_usd
-        description: "coste del envío en dólares"
 
       - name: delivery_date
         description: "fecha de entrega del pedido"
@@ -33,22 +29,28 @@ models:
         description: "identifica el envío"
 
       - name: status
-        description: "estado del pedido"
+        description: "estado de la promoción"
 
       - name: delivery_time
         description: "hora de entrega del pedido"
-
-      - name: order_total_usd
-        description: "total del pedido en dólares"
 
       - name: estimated_delivery_days
         description: "diferencia entre la fecha de entrega y cuando se pronosticó que iba a llegar el pedido"
 
       - name: orders_time
-        description: "esta columna nos indica si el pedido se ha retrasado o si ha llegado antes de lo previsto"
+        description: "columna que nos muestra si el pedido llegó a tiempo, retrasado o antes de lo esperado"
+
+      - name: discount_usd
+        description: "descuento en dólares"
+
+      - name: shipping_cost_usd
+        description: "coste del envío en dólares"
+
+      - name: order_total_usd
+        description: "total del pedido en dólares"
 
       - name: sync_date
-        description: "fecha de sincronización del registro"
+        description: "fecha de sincronización"
 
       - name: sync_time
-        description: "hora de sincronización del registro"
+        description: "hora de sincronización"

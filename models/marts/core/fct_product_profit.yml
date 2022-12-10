@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: fct_product_profit
+    description: "tabla que nos muestra los ingresos, coste y beneficio de cada producto"
+    columns:
+      - name: product_profit_id
+        description: "PK de la tabla, identifica de manera única cada registro"
+
+      - name: product_id
+        description: "PK de la tabla products, identifica de manera unica cada producto"
+
+      - name: year_month_id
+        description: "mes en el que se realizó la venta"
+
+      - name: sales_quantity
+        description: "cantidad de producto que se vende"
+
+      - name: total_income
+        description: "ingresos totales"
+
+      - name: total_cost
+        description: "coste total"
+
+      - name: total_profit
+        description: "beneficio total"

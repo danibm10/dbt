@@ -23,12 +23,21 @@ models:
 
       - name: expected_income_usd
         description: "previsión de ingresos. Se ha calculado multiplicando el precio de venta del producto por la cantidad esperada vendida"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
 
       - name: expected_cost_usd
         description: "previsión de coste. Se ha calculado multiplicando el coste unitario de venta del producto por la cantidad esperada vendida"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
 
       - name: expected_profit_usd
         description: "previsión de beneficio. Se ha calculado como la diferencia de ingresos y coste"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: float
 
       - name: sync_date
         description: "fecha de sincronización del registro"

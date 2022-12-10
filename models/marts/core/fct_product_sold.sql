@@ -30,8 +30,8 @@ fct_product_sold AS (
         , d.user_id
         , e.product_detail_id
         , a.address_id
-        , a.order_id
         , c.year_month_day_id
+        , a.order_id
         , CASE
             when HOUR(a.creation_time) between 6 and 14 then 'mañana'
             when HOUR(a.creation_time) between 14 and 20 then 'tarde'
