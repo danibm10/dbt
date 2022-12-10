@@ -19,6 +19,9 @@ models:
 
       - name: creation_date
         description: "fecha en la que se crea el pedido"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
 
       - name: creation_time
         description: "hora en la que se crea el pedido"
@@ -28,9 +31,15 @@ models:
 
       - name: estimated_delivery_date
         description: "fecha estimada de llegada del pedido"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
 
       - name: estimated_delivery_time
         description: "hora estimada de llegada del pedido"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: time
 
       - name: order_cost
         description: "coste del pedido"
@@ -43,9 +52,15 @@ models:
 
       - name: delivery_date
         description: "fecha de entrega del pedido"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
 
       - name: delivery_time
         description: "hora de entrega del pedido"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: time
 
       - name: tracking_id
         description: "identifica el envío"
@@ -55,6 +70,12 @@ models:
 
       - name: sync_date
         description: "fecha de sincronización del registro"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
 
       - name: sync_time
         description: "hora de sincronización del registro"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: time

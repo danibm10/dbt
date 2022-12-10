@@ -25,15 +25,27 @@ models:
 
       - name: created_at_day
         description: "Fecha de creación del evento"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
 
       - name: created_at_time
         description: "Hora de creación del evento"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: time
 
       - name: order_id
         description: "PK de la tabla de orders"
 
       - name: sync_date
         description: "Fecha de sincronización del registro"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: date
 
       - name: sync_time
         description: "Hora de sincronización del registro"
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: time
