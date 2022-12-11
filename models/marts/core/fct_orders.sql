@@ -24,6 +24,7 @@ fct_orders AS (
         , a.delivery_date
         , a.tracking_id
         , a.status
+        , {{ eliminar_nulos_bueno('a.delivery_days') }} as delivery_days
         , {{ eliminar_nulos_bueno('a.delivery_time') }} as delivery_time
         , {{ eliminar_nulos_bueno('a.estimated_delivery_days') }} as estimated_delivery_days
         , CASE
@@ -55,6 +56,7 @@ dim_orders AS (
         , a.delivery_date
         , a.tracking_id
         , a.status
+        , a.delivery_days
         , a.delivery_time
         , a.estimated_delivery_days
         , {{ eliminar_nulos_bueno('a.orders_time') }} as orders_time
