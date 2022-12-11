@@ -3,6 +3,9 @@ version: 2
 models:
   - name: fct_orders
     description: "tabla que nos muestra información sobre los pedidos"
+    tests:
+    - dbt_expectations.expect_table_row_count_to_be_between:
+        max_value: 361
     columns:
       - name: order_id
         description: "PK de la tabla, identifica de manera única cada pedido realizado"
@@ -18,6 +21,10 @@ models:
 
       - name: promo_id
         description: "identificador único de las promociones"
+        tests:
+              - relationships:
+                  to: ref('stg_promos')
+                  field: promo_id
 
       - name: shipping_service
         description: "empresa realizada para realizar el envío"

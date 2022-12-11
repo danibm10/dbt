@@ -3,6 +3,9 @@
 models:
   - name: fct_product_sold
     description: "tabla de hechos que nos muestra información sobre los productos vendidos en dólares"
+    tests:
+    - dbt_expectations.expect_table_row_count_to_be_between:
+        max_value: 862
     tags: ['gold']
     columns:
       - name: product_sold_id

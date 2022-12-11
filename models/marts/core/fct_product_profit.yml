@@ -3,6 +3,9 @@ version: 2
 models:
   - name: fct_product_profit
     description: "tabla que nos muestra los ingresos, coste y beneficio de cada producto"
+    tests:
+    - dbt_expectations.expect_table_row_count_to_be_between:
+        max_value: 862
     columns:
       - name: product_profit_id
         description: "PK de la tabla, identifica de manera única cada registro"

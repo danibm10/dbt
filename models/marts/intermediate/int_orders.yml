@@ -10,9 +10,17 @@ models:
 
       - name: user_id
         description: "PK de la tabla de stg_users, identifica de manera única cada usuario"
+        tests:
+              - relationships:
+                  to: source('src_sql_server','users')
+                  field: user_id
 
       - name: address_id
         description: "PK de la tabla de address"
+        tests:
+              - relationships:
+                  to: source('src_sql_server','addresses')
+                  field: address_id
 
       - name: promo_id
         description: "tipo de promo que se aplica al pedido"

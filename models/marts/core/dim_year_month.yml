@@ -3,6 +3,9 @@
 models:
   - name: dim_year_month
     description: "tabla que nos muestra información de fechas con granularidad mes"
+    tests:
+    - dbt_expectations.expect_table_row_count_to_be_between:
+        max_value: 12
     tags: ['gold']
     columns:
       - name: month_year_id

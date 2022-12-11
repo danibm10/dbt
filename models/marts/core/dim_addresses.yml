@@ -19,6 +19,8 @@ models:
 
       - name: city
         description: "ciudad a la que pertenece el código postal"
+        tests:
+          - not_null
 
       - name: state
         description: "Estado"

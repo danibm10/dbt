@@ -3,6 +3,9 @@ version: 2
 models:
   - name: fct_events
     description: "tabla que nos muestra información sobre los eventos que un usuario realiza sobre un determinado producto"
+    tests:
+    - dbt_expectations.expect_table_row_count_to_be_between:
+        max_value: 3600
     columns:
       - name: event_id
         description: "PK de la tabla de events"

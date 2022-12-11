@@ -3,6 +3,9 @@
 models:
   - name: dim_users
     description: "Tabla que nos muestra información sobre los usuarios"
+    tests:
+    - dbt_expectations.expect_table_row_count_to_be_between:
+        max_value: 130
     columns:
       - name: user_id
         description: "PK de la tabla, identifica de manera única a cada usuario"

@@ -9,6 +9,7 @@ models:
         description: "llave subrogada que identifica de manera única cada detalle de producto"
         tests:
           - unique
+          - not_null
 
       - name: product_id
         description: "PK de la tabla, identifica de manera única cada producto"

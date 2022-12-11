@@ -10,6 +10,10 @@ models:
 
       - name: product_id
         description: "identificador único del producto"
+        tests:
+              - relationships:
+                  to: source('src_sql_server','products')
+                  field: product_id
 
       - name: date
         description: "fecha en la que la empresa espera vender el producto"
