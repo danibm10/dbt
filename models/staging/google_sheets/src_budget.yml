@@ -18,16 +18,15 @@ sources:
       schema: false
       identifier: false
 
-    freshness:
-      warn_after: {count: 24, period: hour}
-      error_after: {count: 48, period: hour}
-
+     
+      
     tables:
 
       - name: budget
         loaded_at_field: _fivetran_synced
         description: >
           Data about budget in demo.
+        tags: ['bronze']
         columns:
           - name: _row
             description: >
@@ -39,6 +38,9 @@ sources:
             description: >
                PK de la tabla de orders.
             tests:
+              - relationships:
+                  to: source('src_sql_server','products')
+                  field: product_id
               - not_null
           - name: quantity
             description: >
@@ -50,6 +52,8 @@ sources:
               Cada mes del año.
             tests:
               - not_null
+              - dbt_expectations.expect_column_values_to_be_of_type:
+                  column_type: date
           - name: _fivetran_synced
             description: >
               Fecha en la que los datos se cargaron.
