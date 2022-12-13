@@ -8,9 +8,9 @@ WITH fct_orders1 AS (
   FROM {{ ref('dim_year_month_day') }}
     ), 
 
-   stg_promos AS (
+   dim_promos AS (
   SELECT * 
-  FROM {{ ref('stg_promos') }}
+  FROM {{ ref('dim_promos') }}
     ), 
 
 fct_orders AS (
@@ -41,7 +41,7 @@ fct_orders AS (
         
     FROM fct_orders1 AS a LEFT JOIN dim_year_month_day1 AS b
     ON a.creation_date = b.year_month_day_id
-    LEFT JOIN stg_promos AS c
+    LEFT JOIN dim_promos AS c
     ON a.promo_id=c.promo_name
     ), 
 

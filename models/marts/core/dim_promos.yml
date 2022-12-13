@@ -1,0 +1,20 @@
+ version: 2
+
+models:
+  - name: dim_promos
+    description: "esta tabla contiene información sobre las promociones que se aplican a los orders"
+    columns:
+      - name: promo_id
+        description: "identificador único de las promociones"
+
+      - name: discount
+        description: "descuento aplicado al pedido"
+
+      - name: status
+        description: "estado de la promoción"
+
+      - name: sync_date
+        description: "fecha de sincronización"
+
+      - name: sync_time
+        description: "hora de sincronización"

@@ -1,7 +1,6 @@
 {{
     config(
-        materialized='incremental',
-        unique_key=['product_id','year_month_id']
+        materialized='incremental'
     )
 }}
 
