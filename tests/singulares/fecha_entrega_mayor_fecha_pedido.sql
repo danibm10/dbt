@@ -4,7 +4,6 @@
     )
 }}
 
-
 select
 a.delivery_date
 from

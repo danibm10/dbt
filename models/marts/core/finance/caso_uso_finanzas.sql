@@ -9,9 +9,9 @@ dim_products AS (
     ),
 
 fct_product_profit1 AS (
-    SELECT TOP 1
+    SELECT TOP 2
         b.product_name
-        , SUM(a.total_profit) as total_profit
+        , ROUND(SUM(a.total_profit),2) as total_profit
 
     FROM fct_product_profit AS a left join dim_products as b
     ON a.product_id=b.product_id
@@ -20,7 +20,7 @@ fct_product_profit1 AS (
         b.product_name
 
     ORDER BY
-        SUM(a.total_profit) DESC
+        SUM(a.total_profit) ASC
 )
 
 SELECT * FROM fct_product_profit1
