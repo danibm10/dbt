@@ -1,8 +1,7 @@
-
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_new_project'
+name: 'big_query'
 version: '1.0.0'
 config-version: 2
 
@@ -10,7 +9,7 @@ config-version: 2
 profile: 'default'
 
 # These configurations specify where dbt should look for different types of files.
-# The `source-paths` config, for example, states that models in this project can be
+# The `model-paths` config, for example, states that models in this project can be
 # found in the "models/" directory. You probably won't need to change these!
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -28,56 +27,25 @@ clean-targets:         # directories to be removed by `dbt clean`
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
-# In this example config, we tell dbt to build all models in the example/ directory
-# as tables. These settings can be overridden in the individual model files
+# In dbt, the default materialization for a model is a view. This means, when you run 
+# dbt run or dbt build, all of your models will be built as a view in your data platform. 
+# The configuration below will override this setting for models in the example folder to 
+# instead be materialized as tables. Any models you add to the root of the models folder will 
+# continue to be built as views. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
+
 models:
   +transient: false
-  my_new_project:
-    # Applies to all files under models/example/
+  dbt:
+      models:
+      +persist_docs:
+        relation: true
+        columns: true
 
-    staging:
-      +materialized: view
-      +tags: ['staging']
-      +tags: ['silver']
-      +database: |  
-        {%- if  target.name == 'user_dev' -%} dev_silver_db_alumno1
-        {%- elif target.name == 'ci' -%} dev_silver_db_alumno1 
-        {%- elif target.name == 'pro'-%} pro_silver_db_alumno1 
-        {%- else -%} {{target.database}}_silver_db_alumno1
-        {%- endif -%}
-      google_sheets:
-        +schema: google_sheets
-      sql_server:
-        +schema: sql_server
-      
-    marts:
-      +materialized: table
-      +database: |  
-        {%- if  target.name == 'user_dev' -%} dev_gold_db_alumno1 
-        {%- elif target.name == 'ci' -%} dev_gold_db_alumno1
-        {%- elif target.name == 'pro'-%} pro_gold_db_alumno1 
-        {%- else -%} {{target.database}}_gold_db_alumno1
-        {%- endif -%}
-      core:
-        +schema: core
-        +tags: ['gold']
-        +docs:
-          node_color: "gold"
-      intermediate:
-        +schema: intermediate
-        +tags: ['silver']
-        +docs:
-          node_color: "red"
-snapshots:
-  +sql_header: "alter session set timezone = 'Europe/Madrid';alter session set week_start = 7;"
-  +transient: false
-  +target_database: |  
-        {%- if  target.name == 'user_dev' -%} dev_silver_db_alumno1
-        {%- elif target.name == 'ci' -%} dev_silver_db_alumno1
-        {%- elif target.name == 'pro'-%} pro_silver_db_alumno1 
-        {%- else -%} {{target.database}}_silver_db_alumno1
-        {%- endif -%}
-  +target_schema: snapshots
-  +docs:
-    node_color: "brown"
+      # Applies to all files under models/1_bronze/
+      1_bronze:
+        +materialized: view
+        +database: "prueba-453118"
+        +tags: "bronze"
+        +schema: "1_bronze"
+        
