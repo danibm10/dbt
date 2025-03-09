@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: staging
+    description: ""
+    tables:
+      - name: clientes
+        description: ""
+        columns:
+          - name: id_cliente
+            data_type: string
+            description: ""
+          - name: nombre
+            data_type: string
+            description: ""
+          - name: email
+            data_type: string
+            description: ""
+          - name: telefono
+            data_type: string
+            description: ""
+          - name: direccion
+            data_type: string
+            description: ""
+          - name: fecha_creacion
+            data_type: timestamp
+            description: ""
+          - name: estado
+            data_type: string
+            description: ""
