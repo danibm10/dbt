@@ -4,13 +4,6 @@
     unique_key = ['id_cliente']
     )
 }}
-/*with max_snow as (
-    {% if is_incremental() %}
-        select max(fecha_creacion) as max_snow_synced from {{ this }}
-    {% else %}
-        select null as max_snow_synced
-    {% endif %}
-),*/
 
 with 
 clientes_1 as (
