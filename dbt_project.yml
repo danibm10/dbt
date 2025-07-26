@@ -37,7 +37,6 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   +transient: false
   big_query:
-      models:
       +persist_docs:
         relation: true
         columns: true
