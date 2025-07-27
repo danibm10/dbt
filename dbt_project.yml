@@ -48,4 +48,8 @@ models:
         +dataset: "1_bronze"
         +tags: "bronze"
 
-        
+      2_silver:
+        +materialized: incremental
+        +database: "prueba-453118"
+        +dataset: "2_silver"
+        +tags: "silver"
