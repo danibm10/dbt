@@ -6,7 +6,7 @@
 }}
 
 with order_details as (
-select distinct
+select
     id,
     order_id,
     product_id,
@@ -17,14 +17,13 @@ select distinct
     date_allocated,
     purchase_order_id,
     inventory_id,
-    '2025-07-20' as ingestion_date
+    date_ingestion
 from
-    {{source('staging', 'order_details')}}
+    {{ref('order_details')}}
 {% if is_incremental() %}
-where ingestion_date > (select max(ingestion_date) from {{ this }} )  
+where date_ingestion > (select max(date_ingestion) from {{ this }} )  
 {% endif %}
-order by 1
 
 )
 
-select * from customers
+select * from order_details

@@ -6,7 +6,7 @@
 }}
 
 with employees as (
-select distinct
+select
     id,
     company,
     last_name,
@@ -25,13 +25,12 @@ select distinct
     web_page,
     notes,
     attachments,
-    '2025-07-20' as ingestion_date
+    date_ingestion
 from
-    {{source('staging', 'employees')}}
+    {{ref('employees')}}
 {% if is_incremental() %}
-where ingestion_date > (select max(ingestion_date) from {{ this }} )  
+where date_ingestion > (select max(date_ingestion) from {{ this }} )  
 {% endif %}
-order by 1
 
 )
 
