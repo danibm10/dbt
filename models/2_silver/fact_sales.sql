@@ -5,25 +5,38 @@
     )
 }}
 
-with order_details as (
-select
-    id,
-    order_id,
-    product_id,
-    quantity,
-    unit_price,
-    discount,
-    status_id,
-    date_allocated,
-    purchase_order_id,
-    inventory_id,
-    date_ingestion
-from
-    {{ref('order_details')}}
+WITH fact_sales AS (
+SELECT
+    b.id,
+    b.order_id,
+    b.product_id,
+    a.customer_id,
+    a.employee_id,
+    a.shipper_id,
+    b.quantity,
+    b.unit_price,
+    b.discount,
+    b.status_id,
+    b.date_allocated,
+    b.purchase_order_id,
+    b.inventory_id,
+    a.order_date,
+    a.shipped_date,
+    a.paid_date,
+    b.date_ingestion
+FROM
+    {{ref('orders')}} AS a
+LEFT JOIN 
+    {{ref('order_details')}} AS b
+ON 
+    b.order_id = a.id
+WHERE 
+    b.id is not null
 {% if is_incremental() %}
-where date_ingestion > (select max(date_ingestion) from {{ this }} )  
+AND a.date_ingestion > (SELECT MAX(a.date_ingestion) FROM {{ this }} )  
 {% endif %}
-
+ORDER BY 
+    b.order_id DESC
 )
 
-select * from order_details
+SELECT * FROM fact_sales
