@@ -1,0 +1,296 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: ""
+    columns:
+      - name: id
+        data_type: int64
+        description: ""
+
+      - name: company
+        data_type: string
+        description: ""
+
+      - name: last_name
+        data_type: string
+        description: ""
+
+      - name: first_name
+        data_type: string
+        description: ""
+
+      - name: email_address
+        data_type: string
+        description: ""
+
+      - name: job_title
+        data_type: string
+        description: ""
+
+      - name: business_phone
+        data_type: string
+        description: ""
+
+      - name: home_phone
+        data_type: string
+        description: ""
+
+      - name: mobile_phone
+        data_type: string
+        description: ""
+
+      - name: fax_number
+        data_type: string
+        description: ""
+
+      - name: address
+        data_type: string
+        description: ""
+
+      - name: city
+        data_type: string
+        description: ""
+
+      - name: state_province
+        data_type: string
+        description: ""
+
+      - name: zip_postal_code
+        data_type: int64
+        description: ""
+
+      - name: country_region
+        data_type: string
+        description: ""
+
+      - name: web_page
+        data_type: string
+        description: ""
+
+      - name: notes
+        data_type: string
+        description: ""
+
+      - name: attachments
+        data_type: string
+        description: ""
+
+      - name: date_ingestion
+        data_type: timestamp
+        description: ""
+
+  - name: dim_date
+    description: ""
+    columns:
+      - name: sk_date
+        data_type: int64
+        description: ""
+
+      - name: date_day
+        data_type: date
+        description: ""
+
+      - name: day_of_week_name
+        data_type: string
+        description: ""
+
+      - name: day_of_week
+        data_type: int64
+        description: ""
+
+      - name: day_of_month
+        data_type: int64
+        description: ""
+
+      - name: day_of_year
+        data_type: int64
+        description: ""
+
+      - name: week_of_year
+        data_type: int64
+        description: ""
+
+      - name: month_name_short
+        data_type: string
+        description: ""
+
+      - name: month_of_year
+        data_type: int64
+        description: ""
+
+      - name: quarter_of_year
+        data_type: int64
+        description: ""
+
+      - name: quarter_start_date
+        data_type: date
+        description: ""
+
+      - name: quarter_end_date
+        data_type: date
+        description: ""
+
+      - name: year_number
+        data_type: int64
+        description: ""
+
+      - name: year_start_date
+        data_type: date
+        description: ""
+
+      - name: year_end_date
+        data_type: date
+        description: ""
+
+  - name: dim_employees
+    description: ""
+    columns:
+      - name: id
+        data_type: int64
+        description: ""
+
+      - name: company
+        data_type: string
+        description: ""
+
+      - name: last_name
+        data_type: string
+        description: ""
+
+      - name: first_name
+        data_type: string
+        description: ""
+
+      - name: email_address
+        data_type: string
+        description: ""
+
+      - name: job_title
+        data_type: string
+        description: ""
+
+      - name: business_phone
+        data_type: string
+        description: ""
+
+      - name: home_phone
+        data_type: string
+        description: ""
+
+      - name: mobile_phone
+        data_type: string
+        description: ""
+
+      - name: fax_number
+        data_type: string
+        description: ""
+
+      - name: address
+        data_type: string
+        description: ""
+
+      - name: city
+        data_type: string
+        description: ""
+
+      - name: state_province
+        data_type: string
+        description: ""
+
+      - name: zip_postal_code
+        data_type: int64
+        description: ""
+
+      - name: country_region
+        data_type: string
+        description: ""
+
+      - name: web_page
+        data_type: string
+        description: ""
+
+      - name: notes
+        data_type: string
+        description: ""
+
+      - name: attachments
+        data_type: string
+        description: ""
+
+      - name: date_ingestion
+        data_type: timestamp
+        description: ""
+
+  - name: fact_sales
+    description: ""
+    columns:
+      - name: id
+        data_type: int64
+        description: ""
+
+      - name: order_id
+        data_type: int64
+        description: ""
+
+      - name: product_id
+        data_type: int64
+        description: ""
+
+      - name: customer_id
+        data_type: int64
+        description: ""
+
+      - name: employee_id
+        data_type: int64
+        description: ""
+
+      - name: shipper_id
+        data_type: int64
+        description: ""
+
+      - name: quantity
+        data_type: int64
+        description: ""
+
+      - name: unit_price
+        data_type: float64
+        description: ""
+        data_tests:
+          - cantidad
+
+      - name: discount
+        data_type: int64
+        description: ""
+
+      - name: status_id
+        data_type: int64
+        description: ""
+
+      - name: date_allocated
+        data_type: string
+        description: ""
+
+      - name: purchase_order_id
+        data_type: int64
+        description: ""
+
+      - name: inventory_id
+        data_type: int64
+        description: ""
+
+      - name: order_date
+        data_type: timestamp
+        description: ""
+
+      - name: shipped_date
+        data_type: timestamp
+        description: ""
+
+      - name: paid_date
+        data_type: timestamp
+        description: ""
+
+      - name: date_ingestion
+        data_type: timestamp
+        description: ""
