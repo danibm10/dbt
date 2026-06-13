@@ -36,7 +36,7 @@ WHERE
 AND a.date_ingestion > (SELECT MAX(a.date_ingestion) FROM {{ this }} )  
 {% endif %}
 ORDER BY 
-    b.order_id DESC
+    1 asc
 )
 
 SELECT * FROM fact_sales

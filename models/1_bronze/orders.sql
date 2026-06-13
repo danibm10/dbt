@@ -1,4 +1,5 @@
-with orders as (select
+with orders as (
+select
     id,
     employee_id,
     customer_id,
@@ -21,6 +22,7 @@ with orders as (select
     status_id
 from 
     {{source('staging', 'orders')}}
+order by 1
 )
 
 select * from orders

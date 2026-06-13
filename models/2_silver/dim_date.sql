@@ -14,7 +14,7 @@ select
     day_of_month,
     day_of_year,
     week_of_year,
-    month_name
+    month_name,
     month_name_short,
     month_of_year,
     quarter_of_year,
