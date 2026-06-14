@@ -1,0 +1,288 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: "Customer dimension containing customer contact information and business details."
+    columns:
+    - name: id
+      description: Unique identifier for the customer.
+
+    - name: company
+      description: Name of the company associated with the customer.
+
+    - name: last_name
+      description: Customer's last name.
+
+    - name: first_name
+      description: Customer's first name.
+
+    - name: email_address
+      description: Primary email address of the customer.
+
+    - name: job_title
+      description: Customer's job title or position within the company.
+
+    - name: business_phone
+      description: Customer's business phone number.
+
+    - name: home_phone
+      description: Customer's home phone number.
+
+    - name: mobile_phone
+      description: Customer's mobile phone number.
+
+    - name: fax_number
+      description: Customer's fax number.
+
+    - name: address
+      description: Customer's street address.
+
+    - name: city
+      description: City where the customer is located.
+
+    - name: state_province
+      description: State or province where the customer is located.
+
+    - name: zip_postal_code
+      description: Postal or ZIP code of the customer's address.
+
+    - name: country_region
+      description: Country or region where the customer is located.
+
+    - name: web_page
+      description: Website associated with the customer or company.
+
+    - name: notes
+      description: Additional notes or comments about the customer.
+
+    - name: attachments
+      description: References to files or attachments associated with the customer.
+
+    - name: date_ingestion
+      description: Date and time when the record was ingested into the data warehouse.
+
+  - name: dim_date
+    description: "Date dimension used as the MetricFlow time spine."
+    time_spine: 
+      standard_granularity_column: date_day
+    columns:
+    - name: sk_date
+      description: Surrogate key representing the calendar date in YYYYMMDD format.
+
+    - name: date_day
+      description: Calendar date at day granularity.
+      granularity: day
+
+    - name: day_of_week_name
+      description: Name of the day of the week.
+
+    - name: day_of_week
+      description: Numeric representation of the day of the week.
+
+    - name: day_of_month
+      description: Day number within the month.
+
+    - name: day_of_year
+      description: Day number within the year.
+
+    - name: week_of_year
+      description: Week number within the year.
+
+    - name: month_name_short
+      description: Abbreviated month name.
+
+    - name: month_of_year
+      description: Numeric representation of the month.
+
+    - name: quarter_of_year
+      description: Quarter number within the year.
+
+    - name: quarter_start_date
+      description: First day of the quarter.
+
+    - name: quarter_end_date
+      description: Last day of the quarter.
+
+    - name: year_number
+      description: Calendar year.
+
+    - name: year_start_date
+      description: First day of the year.
+
+    - name: year_end_date
+      description: Last day of the year.
+
+  - name: dim_employees
+    description: ""
+    columns:
+    - name: id
+      description: Unique identifier for the employee.
+
+    - name: company
+      description: Company where the employee works.
+
+    - name: last_name
+      description: Employee's last name.
+
+    - name: first_name
+      description: Employee's first name.
+
+    - name: email_address
+      description: Employee's work email address.
+
+    - name: job_title
+      description: Employee's job title or position.
+
+    - name: business_phone
+      description: Employee's business phone number.
+
+    - name: home_phone
+      description: Employee's home phone number.
+
+    - name: mobile_phone
+      description: Employee's mobile phone number.
+
+    - name: fax_number
+      description: Employee's fax number.
+
+    - name: address
+      description: Employee's street address.
+
+    - name: city
+      description: City where the employee is located.
+
+    - name: state_province
+      description: State or province where the employee is located.
+
+    - name: zip_postal_code
+      description: Postal or ZIP code of the employee's address.
+
+    - name: country_region
+      description: Country or region where the employee is located.
+
+    - name: web_page
+      description: Employee's personal or company webpage.
+
+    - name: notes
+      description: Additional notes or comments about the employee.
+
+    - name: attachments
+      description: References to files or attachments associated with the employee.
+
+    - name: date_ingestion
+      description: Date and time when the record was ingested into the data warehouse.
+
+  - name: fact_sales
+    description: >
+          Fact table containing sales order lines. Each row represents a product sold as part of an order placed by a customer.
+    semantic_model: 
+      enabled: true
+    agg_time_dimension: order_date
+    columns:
+      - name: id
+        description: Unique identifier for the sales transaction line.
+        entity:
+          type: primary
+          name: id
+
+      - name: order_id
+        description: Identifier of the customer order associated with the sale.
+        entity: 
+          type: foreign
+          name: order_id
+
+      - name: product_id
+        description: Identifier of the product sold.
+        entity: 
+          type: foreign
+          name: product_id      
+
+      - name: customer_id
+        description: Identifier of the customer who placed the order.
+        entity: 
+          type: foreign
+          name: customer_id
+
+      - name: employee_id
+        description: Identifier of the employee responsible for processing the sale.
+        entity: 
+          type: foreign
+          name: employee_id
+
+      - name: shipper_id
+        description: Identifier of the shipping provider responsible for delivering the order.
+        entity: 
+          type: foreign
+          name: shipper_id
+
+      - name: quantity
+        description: Number of units sold for the product.
+
+      - name: unit_price
+        description: Selling price per unit of the product at the time of the transaction.
+
+      - name: sales_amount
+        description: Total sales amount for the order line before discounts.
+
+      - name: discount
+        description: Discount applied to the sales line.
+
+      - name: status_id
+        description: Identifier of the current status of the order line.
+        entity: 
+          type: foreign
+          name: status_id
+
+      - name: date_allocated
+        description: Date when inventory was allocated to fulfill the order.
+        granularity: day
+        dimension: 
+          type: time
+
+      - name: purchase_order_id
+        description: Identifier of the related purchase order, if applicable.
+        entity: 
+          type: foreign
+          name: purchase_order_id
+
+      - name: inventory_id
+        description: Identifier of the inventory record associated with the sale.
+        entity: 
+          type: foreign
+          name: inventory_id
+
+      - name: order_date
+        description: Date and time when the order was placed.
+        granularity: day
+        dimension: 
+          type: time
+
+      - name: shipped_date
+        description: Date and time when the order was shipped.
+        granularity: day
+        dimension: 
+          type: time
+
+      - name: paid_date
+        description: Date and time when payment was received.
+        granularity: day
+        dimension: 
+          type: time
+
+      - name: date_ingestion
+        description: Date and time when the record was ingested into the data warehouse.
+
+    metrics:
+      - hidden: false
+        expr: quantity
+        name: total_quantity_sold
+        description: Total number of products units sold
+        type: simple
+        agg: sum
+
+      - name: total_sales
+        description: Total sales amount.
+        type: simple
+        label: Total Sales
+        agg: sum
+        expr: sales_amount
