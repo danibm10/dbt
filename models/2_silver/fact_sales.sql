@@ -15,6 +15,7 @@ SELECT
     a.shipper_id,
     b.quantity,
     b.unit_price,
+    b.quantity * b.unit_price AS sales_amount,
     b.discount,
     b.status_id,
     b.date_allocated,
